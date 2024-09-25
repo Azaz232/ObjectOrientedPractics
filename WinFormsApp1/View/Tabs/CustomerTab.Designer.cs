@@ -164,6 +164,7 @@
             AddButton.TabIndex = 0;
             AddButton.Text = "Add";
             AddButton.UseVisualStyleBackColor = true;
+            AddButton.Click += AddButton_Click;
             // 
             // CustomerPanel
             // 
@@ -173,7 +174,7 @@
             CustomerPanel.Size = new Size(420, 275);
             CustomerPanel.TabIndex = 2;
             // 
-            // Customer
+            // CustomerTab
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -181,7 +182,7 @@
             Controls.Add(ButtonsGroupBox);
             Controls.Add(SelectedCustomerGroupBox);
             Controls.Add(CustomersGroupBox);
-            Name = "Customer";
+            Name = "CustomerTab";
             Size = new Size(665, 571);
             CustomersGroupBox.ResumeLayout(false);
             SelectedCustomerGroupBox.ResumeLayout(false);
