@@ -89,6 +89,7 @@
             AddButton.TabIndex = 8;
             AddButton.Text = "Add";
             AddButton.UseVisualStyleBackColor = true;
+            AddButton.Click += AddButton_Click;
             // 
             // ItemsListBox
             // 

@@ -29,25 +29,26 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Generates objects of an item with TextBoxes.
+        /// Generates objects of an item with TextBoxes.                      ???
         /// </summary>
-        private void AddItemsInfo()
+        private Model.Item AddItemsInfo()
         {
             string name = NameTextBox.Text;
             string descryption = DescriptionTextBox.Text;
             double cost = double.Parse(CostTextBox.Text);
-            _currentItem = new Model.Item(name, descryption, cost);
+            return new Model.Item(name, descryption, cost);
         }
 
         /// <summary>
         /// Adds list elements to ItemListBox.
         /// </summary>
-        private void UpdateItemsInfo()
+        private void UpdateListBox()
         {
             ItemsListBox.Items.Clear();
+
             foreach (Item item in _itemsList)
             {
-                ItemsListBox.Items.Add($"{item.Id} / {item.Name} / {item.Cost}");
+                ItemsListBox.Items.Add($"{item.Id} / {item.Name}");
             }
         }
 
@@ -56,6 +57,8 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void ClearItemInfo()
         {
+            IDTextBox.Clear();
+
             CostTextBox.Clear();
             CostTextBox.BackColor = Color.White;
 
@@ -64,12 +67,10 @@ namespace ObjectOrientedPractics.View.Tabs
 
             NameTextBox.Clear();
             NameTextBox.BackColor = Color.White;
-
-            IDTextBox.Clear();
         }
 
         /// <summary>
-        /// Updates info about an item in TextBoxes.
+        /// Updates info about an item in TextBox.
         /// </summary>
         /// <param name="item">Обновляемая книга.</param>
         private void UpdateItemInfo()
@@ -80,36 +81,31 @@ namespace ObjectOrientedPractics.View.Tabs
             NameTextBox.Text = _currentItem.Name.ToString();
         }
 
-        /// <summary>
-        /// Редактирует объект книги с помощью TextBox's.
-        /// </summary>
-        private void EditBooksInfo()
-        {
-            if (ItemsListBox.SelectedItem != null)
-            {
-                _currentItem.Cost = double.Parse(CostTextBox.Text);
-                _currentItem.Name = NameTextBox.Text;
-                _currentItem.Info = DescriptionTextBox.Text;
-            }
-        }
-        // 7
+        //       ???
 
+        ///// <summary>
+        ///// Редактирует объект книги с помощью TextBox's.
+        ///// </summary>
+        //private void EditBooksInfo()
+        //{
+        //    if (ItemsListBox.SelectedItem != null)
+        //    {
+        //        _currentItem.Cost = double.Parse(CostTextBox.Text);
+        //        _currentItem.Name = NameTextBox.Text;
+        //        _currentItem.Info = DescriptionTextBox.Text;
+        //    }
+        //}
+
+        // 7
 
         private void NameTextBox_TextChanged_1(object sender, EventArgs e)
         {
             try
             {
-                string valueName = NameTextBox.Text;
-                if (valueName.Length > 200)
-                {
-                    NameTextBox.BackColor = Color.LightPink;
-                }
-                else
-                {
-                    NameTextBox.BackColor = Color.White;
-                }
+                _currentItem.Name = NameTextBox.Text;
+                NameTextBox.BackColor = Color.White;
             }
-            catch (SystemException)
+            catch (ArgumentException)   //   ?
             {
                 NameTextBox.BackColor = Color.LightPink;
             }
@@ -119,75 +115,29 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             try
             {
-                double valueCost = double.Parse(CostTextBox.Text);
-                if (valueCost < 0 || valueCost > 100000)
+                _currentItem.Cost = double.Parse(CostTextBox.Text);
+                CostTextBox.BackColor = Color.White;
+            }
+            catch (Exception)  //   ?
+            {
+                if (CostTextBox.Text != "")
                 {
                     CostTextBox.BackColor = Color.LightPink;
                 }
-                else
-                {
-                    CostTextBox.BackColor = Color.White;
-                }
             }
-            catch (SystemException)
-            {
-                CostTextBox.BackColor = Color.LightPink;
-            }
+
         }
 
         private void DescriptionTextBox_TextChanged_1(object sender, EventArgs e)
         {
             try
             {
-                string valueInfo = DescriptionTextBox.Text;
-                if (valueInfo.Length > 1000)
-                {
-                    DescriptionTextBox.BackColor = Color.LightPink;
-                }
-                else
-                {
-                    DescriptionTextBox.BackColor = Color.White;
-                }
+                _currentItem.Info = DescriptionTextBox.Text;
+                DescriptionTextBox.BackColor = Color.White;
             }
-            catch (SystemException)
+            catch (ArgumentException)
             {
                 DescriptionTextBox.BackColor = Color.LightPink;
-            }
-        }
-        private void AddButton_Click()
-        {
-            try
-            {
-                // list of TextBoxes
-                var TextBoxes = new List<TextBox> { CostTextBox, NameTextBox, DescriptionTextBox };
-                bool RedBox = true;
-
-                foreach (var TextBox in TextBoxes)
-                {
-                    if (TextBox.BackColor == Color.LightPink)
-                    {
-                        RedBox = false;
-                    }
-                }
-                // check for empty or red boxes.
-                if (TextBoxes.All(box => !string.IsNullOrWhiteSpace(box.Text)) && RedBox)
-                {
-                    AddItemsInfo();
-                    _itemsList.Add(_currentItem);
-                    UpdateItemInfo();
-                    ClearItemInfo();
-
-                }
-                else
-                {
-                    throw new Exception("Incorrect Values. ");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -213,11 +163,46 @@ namespace ObjectOrientedPractics.View.Tabs
             if (ItemsListBox.SelectedItem != null)
             {
                 _currentItem = _itemsList[ItemsListBox.SelectedIndex];
-                UpdateItemsInfo();
+                UpdateListBox();
             }
             if (ItemsListBox.SelectedIndex == -1)
             {
                 ClearItemInfo();
+            }
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // list of TextBoxes
+                var TextBoxes = new List<TextBox> { CostTextBox, NameTextBox, DescriptionTextBox };
+                bool RedBox = true;
+
+                foreach (var TextBox in TextBoxes)
+                {
+                    if (TextBox.BackColor == Color.LightPink)
+                    {
+                        RedBox = false;
+                    }
+                }
+                // check for empty or red boxes.
+                if (TextBoxes.All(box => !string.IsNullOrWhiteSpace(box.Text)) && RedBox)
+                {
+                    Model.Item selectedItem = AddItemsInfo();
+                    _itemsList.Add(selectedItem);
+                    UpdateListBox();
+                }
+                else
+                {
+                    throw new Exception("Incorrect Values. ");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
     }
