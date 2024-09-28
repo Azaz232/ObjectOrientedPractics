@@ -31,9 +31,9 @@
             CustomersGroupBox = new GroupBox();
             CustomersListBox = new ListBox();
             SelectedCustomerGroupBox = new GroupBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            AddressTextBox = new TextBox();
+            FullNameTextBox = new TextBox();
+            IDTextBox = new TextBox();
             AddressLabel = new Label();
             FullNameLabel = new Label();
             IDLabel = new Label();
@@ -66,12 +66,13 @@
             CustomersListBox.Name = "CustomersListBox";
             CustomersListBox.Size = new Size(230, 480);
             CustomersListBox.TabIndex = 6;
+            CustomersListBox.SelectedIndexChanged += CustomersListBox_SelectedIndexChanged;
             // 
             // SelectedCustomerGroupBox
             // 
-            SelectedCustomerGroupBox.Controls.Add(textBox3);
-            SelectedCustomerGroupBox.Controls.Add(textBox2);
-            SelectedCustomerGroupBox.Controls.Add(textBox1);
+            SelectedCustomerGroupBox.Controls.Add(AddressTextBox);
+            SelectedCustomerGroupBox.Controls.Add(FullNameTextBox);
+            SelectedCustomerGroupBox.Controls.Add(IDTextBox);
             SelectedCustomerGroupBox.Controls.Add(AddressLabel);
             SelectedCustomerGroupBox.Controls.Add(FullNameLabel);
             SelectedCustomerGroupBox.Controls.Add(IDLabel);
@@ -83,27 +84,29 @@
             SelectedCustomerGroupBox.TabStop = false;
             SelectedCustomerGroupBox.Text = "Selected Customer";
             // 
-            // textBox3
+            // AddressTextBox
             // 
-            textBox3.Location = new Point(101, 126);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(313, 153);
-            textBox3.TabIndex = 5;
+            AddressTextBox.Location = new Point(101, 126);
+            AddressTextBox.Multiline = true;
+            AddressTextBox.Name = "AddressTextBox";
+            AddressTextBox.Size = new Size(313, 153);
+            AddressTextBox.TabIndex = 5;
+            AddressTextBox.TextChanged += AddressTextBox_TextChanged;
             // 
-            // textBox2
+            // FullNameTextBox
             // 
-            textBox2.Location = new Point(101, 83);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(313, 28);
-            textBox2.TabIndex = 4;
+            FullNameTextBox.Location = new Point(101, 83);
+            FullNameTextBox.Name = "FullNameTextBox";
+            FullNameTextBox.Size = new Size(313, 28);
+            FullNameTextBox.TabIndex = 4;
+            FullNameTextBox.TextChanged += FullNameTextBox_TextChanged;
             // 
-            // textBox1
+            // IDTextBox
             // 
-            textBox1.Location = new Point(101, 39);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 28);
-            textBox1.TabIndex = 3;
+            IDTextBox.Location = new Point(101, 39);
+            IDTextBox.Name = "IDTextBox";
+            IDTextBox.Size = new Size(125, 28);
+            IDTextBox.TabIndex = 3;
             // 
             // AddressLabel
             // 
@@ -154,6 +157,7 @@
             RemoveButton.TabIndex = 1;
             RemoveButton.Text = "Remove";
             RemoveButton.UseVisualStyleBackColor = true;
+            RemoveButton.Click += RemoveButton_Click;
             // 
             // AddButton
             // 
@@ -199,9 +203,9 @@
         private Label FullNameLabel;
         private Label IDLabel;
         private Label AddressLabel;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox AddressTextBox;
+        private TextBox FullNameTextBox;
+        private TextBox IDTextBox;
         private Panel CustomerPanel;
         private Button AddButton;
         private Button RemoveButton;

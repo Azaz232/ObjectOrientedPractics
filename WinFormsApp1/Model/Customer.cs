@@ -1,6 +1,6 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using ObjectOrientedPractics.Services;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,12 +32,22 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
-
-        public Customer(int id, string fullname, string address)
+        public int Id
         {
-            _id = id;
+            get { return _id; }
+        }
+
+        public Customer(string fullname, string address)
+        {
             Fullname = fullname;
             Address = address;
+        }
+
+        public Customer()
+        {
+            Fullname = string.Empty;
+            Address = string.Empty;
+            //_id = IdGenerator.GetNextId();
         }
     }
 }
