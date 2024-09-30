@@ -42,6 +42,8 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            label5 = new Label();
+            CtegoryComboBox = new ComboBox();
             ItemsGroupBox.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -105,6 +107,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(CtegoryComboBox);
+            groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(DescriptionTextBox);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(NameTextBox);
@@ -142,16 +146,16 @@
             // 
             // NameTextBox
             // 
-            NameTextBox.Location = new Point(17, 158);
+            NameTextBox.Location = new Point(17, 199);
             NameTextBox.Multiline = true;
             NameTextBox.Name = "NameTextBox";
-            NameTextBox.Size = new Size(380, 111);
+            NameTextBox.Size = new Size(380, 70);
             NameTextBox.TabIndex = 5;
             NameTextBox.TextChanged += NameTextBox_TextChanged_1;
             // 
             // CostTextBox
             // 
-            CostTextBox.Location = new Point(53, 74);
+            CostTextBox.Location = new Point(90, 72);
             CostTextBox.Name = "CostTextBox";
             CostTextBox.Size = new Size(146, 28);
             CostTextBox.TabIndex = 4;
@@ -160,7 +164,7 @@
             // IDTextBox
             // 
             IDTextBox.Enabled = false;
-            IDTextBox.Location = new Point(53, 38);
+            IDTextBox.Location = new Point(90, 38);
             IDTextBox.Name = "IDTextBox";
             IDTextBox.ReadOnly = true;
             IDTextBox.Size = new Size(146, 28);
@@ -170,7 +174,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label3.Location = new Point(6, 123);
+            label3.Location = new Point(6, 170);
             label3.Name = "label3";
             label3.Size = new Size(55, 17);
             label3.TabIndex = 2;
@@ -195,6 +199,24 @@
             label1.Size = new Size(26, 17);
             label1.TabIndex = 0;
             label1.Text = "ID:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label5.Location = new Point(7, 121);
+            label5.Name = "label5";
+            label5.Size = new Size(71, 17);
+            label5.TabIndex = 8;
+            label5.Text = "Category:";
+            // 
+            // CtegoryComboBox
+            // 
+            CtegoryComboBox.FormattingEnabled = true;
+            CtegoryComboBox.Location = new Point(90, 116);
+            CtegoryComboBox.Name = "CtegoryComboBox";
+            CtegoryComboBox.Size = new Size(146, 28);
+            CtegoryComboBox.TabIndex = 9;
             // 
             // ItemsTab
             // 
@@ -227,5 +249,7 @@
         private Button RemoveButton;
         private Button AddButton;
         private TextBox DescriptionTextBox;
+        private ComboBox CtegoryComboBox;
+        private Label label5;
     }
 }

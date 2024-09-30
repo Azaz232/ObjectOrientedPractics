@@ -80,17 +80,25 @@ namespace ObjectOrientedPractics.Model {
         }
 
         /// <summary>
+        /// Gets and sets item's category. <see cref="Item"/>.
+        /// </summary>
+        public Category Category { get; set; }
+
+
+        /// <summary>
         /// Creates a sample of the class <see cref="Item"/>.
         /// </summary>
-        /// <param name="name">Название товара.</param>
-        /// <param name="info">Описание товара.</param>
-        /// <param name="cost">Стоимость товара.</param>
-        public Item(string name, string info, double cost)
+        /// <param name="name">Name of the item.</param>
+        /// <param name="info">Description of the item.</param>
+        /// <param name="cost">Cost of the item.</param>
+        /// /// <param name="category">Category of the item.</param>
+        public Item(string name, string info, double cost, Category category)
         {
             Name = name;
             Info = info;
             Cost = cost;
             _id = IdGenerator.GetNextId();
+            Category = category;
         }
 
         /// <summary>

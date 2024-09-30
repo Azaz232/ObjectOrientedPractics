@@ -93,7 +93,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 _currentItem.Name = NameTextBox.Text;
                 NameTextBox.BackColor = Color.White;
             }
-            catch (ArgumentException) 
+            catch (ArgumentException)
             {
                 NameTextBox.BackColor = Color.LightPink;
             }
@@ -198,6 +198,9 @@ namespace ObjectOrientedPractics.View.Tabs
                 _currentItem = _selectedItem;
             }
         }
+
+        
+
     }
 
 }
