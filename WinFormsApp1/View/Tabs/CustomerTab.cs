@@ -24,7 +24,10 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private Customer _currentCustomer = new Customer();
 
-
+        /// <summary>
+        /// Variable - Customer type.
+        /// </summary>
+        private Customer _selectedCustomer = new Customer();
         public CustomerTab()
         {
             InitializeComponent();
@@ -77,8 +80,6 @@ namespace ObjectOrientedPractics.View.Tabs
             AddressTextBox.Text = customer.Address.ToString();
         }
 
-
-
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -91,10 +92,6 @@ namespace ObjectOrientedPractics.View.Tabs
                 FullNameTextBox.BackColor = Color.LightPink;
             }
         }
-
-
-
-
 
         private void AddressTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -114,7 +111,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             try
             {
-                // create a list of TextBoxes to check them
+                // Create a list of TextBoxes to check
                 var textBoxes = new List<System.Windows.Forms.TextBox>
                 { FullNameTextBox, AddressTextBox };
                 bool ifRed = true;
@@ -127,7 +124,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     }
                 }
 
-                // check text boxes if they are empty or red
+                // Check TextBoxes if they are empty or red
                 if (textBoxes.All(tb => !string.IsNullOrWhiteSpace(tb.Text)) && ifRed)
                 {
                     Customer selectedCustomer = AddItemsInfo();
@@ -141,6 +138,7 @@ namespace ObjectOrientedPractics.View.Tabs
             }
             catch (Exception ex)
             {
+                // Error message
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
@@ -150,7 +148,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (CustomersListBox.SelectedIndex == -1)
             {
-                // error if an element is not chosen
+                // No chosen elements error message
                 MessageBox.Show(
                     "Не выбран элемент для удаления.",
                     "Ошибка",
@@ -173,8 +171,13 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-
-
-
+        private void CustomerListBox_DoubleClick(object sender, EventArgs e)
+        {
+            if (CustomersListBox.SelectedItem != null)
+            {
+                UpdateListBox();
+                _currentCustomer = _selectedCustomer;
+            }
+        }
     }
 }

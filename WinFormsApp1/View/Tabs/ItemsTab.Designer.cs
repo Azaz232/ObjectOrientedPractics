@@ -101,6 +101,7 @@
             ItemsListBox.Size = new Size(314, 497);
             ItemsListBox.TabIndex = 0;
             ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
+            ItemsListBox.DoubleClick += ItemsListBox_DoubleClick;
             // 
             // groupBox2
             // 
@@ -158,8 +159,10 @@
             // 
             // IDTextBox
             // 
+            IDTextBox.Enabled = false;
             IDTextBox.Location = new Point(53, 38);
             IDTextBox.Name = "IDTextBox";
+            IDTextBox.ReadOnly = true;
             IDTextBox.Size = new Size(146, 28);
             IDTextBox.TabIndex = 3;
             // 

@@ -67,6 +67,7 @@
             CustomersListBox.Size = new Size(230, 480);
             CustomersListBox.TabIndex = 6;
             CustomersListBox.SelectedIndexChanged += CustomersListBox_SelectedIndexChanged;
+            CustomersListBox.DoubleClick += CustomerListBox_DoubleClick;
             // 
             // SelectedCustomerGroupBox
             // 
@@ -103,8 +104,10 @@
             // 
             // IDTextBox
             // 
+            IDTextBox.Enabled = false;
             IDTextBox.Location = new Point(101, 39);
             IDTextBox.Name = "IDTextBox";
+            IDTextBox.ReadOnly = true;
             IDTextBox.Size = new Size(125, 28);
             IDTextBox.TabIndex = 3;
             // 

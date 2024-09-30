@@ -14,18 +14,39 @@ using System.Threading.Tasks;
 using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.Model {
+    /// <summary>
+    /// Holds data of items.
+    /// </summary>
     class Item
     {
+        /// <summary>
+        /// Unique number of the item.
+        /// </summary>
         private readonly int _id;
 
-        private string _name = string.Empty;
+        /// <summary>
+        /// Name of the item.
+        /// </summary>
+        private string _name;
 
-        private string _info = string.Empty; 
+        /// <summary>
+        /// Description of the item.
+        /// </summary>
+        private string _info;
 
+        /// <summary>
+        /// Cost of the item.
+        /// </summary>
         private double _cost;
 
+        /// <summary>
+        /// Returns unique number of the item.
+        /// </summary>
         public int Id { get { return _id; } }
 
+        /// <summary>
+        /// Gets and sets the name of the item.
+        /// </summary>
         public string Name {
             get { return _name; }
             set {
@@ -34,7 +55,9 @@ namespace ObjectOrientedPractics.Model {
                 }
             }
 
-
+        /// <summary>
+        /// Gets and sets the description of the item.
+        /// </summary>
         public string Info {
             get { return _info; }
             set
@@ -43,6 +66,10 @@ namespace ObjectOrientedPractics.Model {
                 _info = value;
             }
         }
+
+        /// <summary>
+        /// Gets and sets the price of the item.
+        /// </summary>
         public double Cost
         {
             get { return _cost; }
@@ -52,7 +79,12 @@ namespace ObjectOrientedPractics.Model {
             }
         }
 
-
+        /// <summary>
+        /// Creates a sample of the class <see cref="Item"/>.
+        /// </summary>
+        /// <param name="name">Название товара.</param>
+        /// <param name="info">Описание товара.</param>
+        /// <param name="cost">Стоимость товара.</param>
         public Item(string name, string info, double cost)
         {
             Name = name;
@@ -61,6 +93,9 @@ namespace ObjectOrientedPractics.Model {
             _id = IdGenerator.GetNextId();
         }
 
+        /// <summary>
+        /// Creates an emprty sample of the class <see cref="Item"/>.
+        /// </summary>
         public Item()
         {
             Name = string.Empty;

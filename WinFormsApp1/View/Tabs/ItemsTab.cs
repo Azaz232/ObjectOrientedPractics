@@ -23,20 +23,25 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private Item _currentItem = new Item();
 
+        /// <summary>
+        /// Variable - type Item.
+        /// </summary>
+        private Item _selectedItem = new Item();
+
         public ItemsTab()
         {
             InitializeComponent();
         }
 
         /// <summary>
-        /// Generates objects of an item with TextBoxes.                      ???
+        /// Generates objects of an item with TextBoxes.
         /// </summary>
         private Model.Item AddItemsInfo()
         {
             string name = NameTextBox.Text;
-            string descryption = DescriptionTextBox.Text;
+            string description = DescriptionTextBox.Text;
             double cost = double.Parse(CostTextBox.Text);
-            return new Model.Item(name, descryption, cost);
+            return new Model.Item(name, description, cost);
         }
 
         /// <summary>
@@ -73,30 +78,13 @@ namespace ObjectOrientedPractics.View.Tabs
         /// Updates info about an item in TextBox.
         /// </summary>
         /// <param name="item">Обновляемая книга.</param>
-        private void UpdateItemInfo()
+        private void UpdateItemInfo(Item item)
         {
-            IDTextBox.Text = _currentItem.Id.ToString();
-            DescriptionTextBox.Text = _currentItem.Info.ToString();
-            CostTextBox.Text = _currentItem.Cost.ToString();
-            NameTextBox.Text = _currentItem.Name.ToString();
+            IDTextBox.Text = item.Id.ToString();
+            DescriptionTextBox.Text = item.Info.ToString();
+            CostTextBox.Text = item.Cost.ToString();
+            NameTextBox.Text = item.Name.ToString();
         }
-
-        //       ???
-
-        ///// <summary>
-        ///// Редактирует объект книги с помощью TextBox's.
-        ///// </summary>
-        //private void EditBooksInfo()
-        //{
-        //    if (ItemsListBox.SelectedItem != null)
-        //    {
-        //        _currentItem.Cost = double.Parse(CostTextBox.Text);
-        //        _currentItem.Name = NameTextBox.Text;
-        //        _currentItem.Info = DescriptionTextBox.Text;
-        //    }
-        //}
-
-        // 7
 
         private void NameTextBox_TextChanged_1(object sender, EventArgs e)
         {
@@ -105,7 +93,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 _currentItem.Name = NameTextBox.Text;
                 NameTextBox.BackColor = Color.White;
             }
-            catch (ArgumentException)   //   ?
+            catch (ArgumentException) 
             {
                 NameTextBox.BackColor = Color.LightPink;
             }
@@ -118,7 +106,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 _currentItem.Cost = double.Parse(CostTextBox.Text);
                 CostTextBox.BackColor = Color.White;
             }
-            catch (Exception)  //   ?
+            catch (Exception)
             {
                 if (CostTextBox.Text != "")
                 {
@@ -163,11 +151,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (ItemsListBox.SelectedItem != null)
             {
                 _currentItem = _itemsList[ItemsListBox.SelectedIndex];
-                UpdateListBox();
-            }
-            if (ItemsListBox.SelectedIndex == -1)
-            {
-                ClearItemInfo();
+                UpdateItemInfo(_currentItem);
             }
         }
 
@@ -203,6 +187,15 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void ItemsListBox_DoubleClick(object sender, EventArgs e)
+        {
+            if (ItemsListBox.SelectedItem != null)
+            {
+                UpdateListBox();
+                _currentItem = _selectedItem;
             }
         }
     }
