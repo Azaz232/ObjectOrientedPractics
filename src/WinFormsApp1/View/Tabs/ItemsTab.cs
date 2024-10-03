@@ -31,6 +31,7 @@ namespace ObjectOrientedPractics.View.Tabs
         public ItemsTab()
         {
             InitializeComponent();
+            LoadCategoryComboBox();
         }
 
         /// <summary>
@@ -41,7 +42,8 @@ namespace ObjectOrientedPractics.View.Tabs
             string name = NameTextBox.Text;
             string description = DescriptionTextBox.Text;
             double cost = double.Parse(CostTextBox.Text);
-            return new Model.Item(name, description, cost);
+            Category category = (Category)CategoryComboBox.SelectedItem;
+            return new Model.Item(name, description, cost, category);
         }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
             foreach (Item item in _itemsList)
             {
-                ItemsListBox.Items.Add($"{item.Id} / {item.Name}");
+                ItemsListBox.Items.Add($"{item.Id} / {item.Name} / {item.Category}");
             }
         }
 
@@ -72,6 +74,8 @@ namespace ObjectOrientedPractics.View.Tabs
 
             NameTextBox.Clear();
             NameTextBox.BackColor = Color.White;
+
+            CategoryComboBox.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -84,6 +88,7 @@ namespace ObjectOrientedPractics.View.Tabs
             DescriptionTextBox.Text = item.Info.ToString();
             CostTextBox.Text = item.Cost.ToString();
             NameTextBox.Text = item.Name.ToString();
+            CategoryComboBox.Text = item.Category.ToString();
         }
 
         private void NameTextBox_TextChanged_1(object sender, EventArgs e)
@@ -171,7 +176,8 @@ namespace ObjectOrientedPractics.View.Tabs
                     }
                 }
                 // check for empty or red boxes.
-                if (TextBoxes.All(box => !string.IsNullOrWhiteSpace(box.Text)) && RedBox)
+                if (TextBoxes.All(tb => !string.IsNullOrWhiteSpace(tb.Text))
+                    && CategoryComboBox.SelectedItem != null && RedBox)
                 {
                     Model.Item selectedItem = AddItemsInfo();
                     _itemsList.Add(selectedItem);
@@ -199,8 +205,25 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        
+        /// <summary>
+        /// Adds elements of Category into CategoryComboBox.
+        /// </summary>
+        private void LoadCategoryComboBox()
+        {
+            foreach (var item in Enum.GetValues(typeof(Category)))
+            {
+                CategoryComboBox.Items.Add(item);
+            }
+        }
 
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CategoryComboBox.SelectedItem != null && ItemsListBox.SelectedItem != null)
+            {
+                _currentItem.Category = (Category)CategoryComboBox.SelectedItem;
+                UpdateItemInfo(_currentItem);
+            }
+        }
     }
 
 }

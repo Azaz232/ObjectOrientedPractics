@@ -91,7 +91,7 @@ namespace ObjectOrientedPractics.Model {
         /// <param name="name">Name of the item.</param>
         /// <param name="info">Description of the item.</param>
         /// <param name="cost">Cost of the item.</param>
-        /// /// <param name="category">Category of the item.</param>
+        /// <param name="category">Category of the item.</param>
         public Item(string name, string info, double cost, Category category)
         {
             Name = name;
@@ -109,7 +109,8 @@ namespace ObjectOrientedPractics.Model {
             Name = string.Empty;
             Info = string.Empty;
             Cost = 0;
-            _id = IdGenerator.GetNextId();  
+            _id = IdGenerator.GetNextId();
+            Category = 0;
         }
 
     }

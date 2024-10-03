@@ -34,6 +34,8 @@
             AddButton = new Button();
             ItemsListBox = new ListBox();
             groupBox2 = new GroupBox();
+            CategoryComboBox = new ComboBox();
+            label5 = new Label();
             DescriptionTextBox = new TextBox();
             label4 = new Label();
             NameTextBox = new TextBox();
@@ -42,8 +44,6 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            label5 = new Label();
-            CtegoryComboBox = new ComboBox();
             ItemsGroupBox.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -107,7 +107,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(CtegoryComboBox);
+            groupBox2.Controls.Add(CategoryComboBox);
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(DescriptionTextBox);
             groupBox2.Controls.Add(label4);
@@ -124,6 +124,25 @@
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Selected Item";
+            // 
+            // CategoryComboBox
+            // 
+            CategoryComboBox.FormattingEnabled = true;
+            CategoryComboBox.Location = new Point(90, 116);
+            CategoryComboBox.Name = "CategoryComboBox";
+            CategoryComboBox.Size = new Size(146, 28);
+            CategoryComboBox.TabIndex = 9;
+            CategoryComboBox.SelectedIndexChanged += CategoryComboBox_SelectedIndexChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label5.Location = new Point(7, 121);
+            label5.Name = "label5";
+            label5.Size = new Size(71, 17);
+            label5.TabIndex = 8;
+            label5.Text = "Category:";
             // 
             // DescriptionTextBox
             // 
@@ -200,24 +219,6 @@
             label1.TabIndex = 0;
             label1.Text = "ID:";
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label5.Location = new Point(7, 121);
-            label5.Name = "label5";
-            label5.Size = new Size(71, 17);
-            label5.TabIndex = 8;
-            label5.Text = "Category:";
-            // 
-            // CtegoryComboBox
-            // 
-            CtegoryComboBox.FormattingEnabled = true;
-            CtegoryComboBox.Location = new Point(90, 116);
-            CtegoryComboBox.Name = "CtegoryComboBox";
-            CtegoryComboBox.Size = new Size(146, 28);
-            CtegoryComboBox.TabIndex = 9;
-            // 
             // ItemsTab
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -249,7 +250,7 @@
         private Button RemoveButton;
         private Button AddButton;
         private TextBox DescriptionTextBox;
-        private ComboBox CtegoryComboBox;
+        private ComboBox CategoryComboBox;
         private Label label5;
     }
 }
