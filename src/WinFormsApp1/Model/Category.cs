@@ -9,7 +9,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Items category.
     /// </summary>
-    internal enum Category
+    public enum Category
     {
         /// <summary>
         /// Phones.

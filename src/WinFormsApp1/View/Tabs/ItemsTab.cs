@@ -16,7 +16,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// List of items.
         /// </summary>
-        private List<Item> _itemsList = new();
+        public List<Item> _items = new();
 
         /// <summary>
         /// Variable - type Item.
@@ -27,6 +27,11 @@ namespace ObjectOrientedPractics.View.Tabs
         /// Variable - type Item.
         /// </summary>
         private Item _selectedItem = new Item();
+
+        /// <summary>
+        /// Gets and sets a list of item.
+        /// </summary>
+        public List<Item> Items { get { return _items; } set { _items = value; } }
 
         public ItemsTab()
         {
@@ -53,7 +58,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             ItemsListBox.Items.Clear();
 
-            foreach (Item item in _itemsList)
+            foreach (Item item in _items)
             {
                 ItemsListBox.Items.Add($"{item.Id} / {item.Name} / {item.Category}");
             }
@@ -146,7 +151,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     MessageBoxDefaultButton.Button1);
                 return;
             }
-            _itemsList.RemoveAt(ItemsListBox.SelectedIndex);
+            _items.RemoveAt(ItemsListBox.SelectedIndex);
             ItemsListBox.Items.RemoveAt(ItemsListBox.SelectedIndex);
             ClearItemInfo();
         }
@@ -155,7 +160,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (ItemsListBox.SelectedItem != null)
             {
-                _currentItem = _itemsList[ItemsListBox.SelectedIndex];
+                _currentItem = _items[ItemsListBox.SelectedIndex];
                 UpdateItemInfo(_currentItem);
             }
         }
@@ -180,7 +185,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     && CategoryComboBox.SelectedItem != null && RedBox)
                 {
                     Model.Item selectedItem = AddItemsInfo();
-                    _itemsList.Add(selectedItem);
+                    _items.Add(selectedItem);
                     UpdateListBox();
                 }
                 else

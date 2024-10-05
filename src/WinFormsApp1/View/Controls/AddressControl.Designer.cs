@@ -56,6 +56,7 @@
             // PostIndexLabel
             // 
             PostIndexLabel.AutoSize = true;
+            PostIndexLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             PostIndexLabel.Location = new Point(12, 52);
             PostIndexLabel.Name = "PostIndexLabel";
             PostIndexLabel.Size = new Size(79, 20);
@@ -65,6 +66,7 @@
             // CountryLabel
             // 
             CountryLabel.AutoSize = true;
+            CountryLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             CountryLabel.Location = new Point(12, 89);
             CountryLabel.Name = "CountryLabel";
             CountryLabel.Size = new Size(63, 20);
@@ -74,6 +76,7 @@
             // StreetLabel
             // 
             StreetLabel.AutoSize = true;
+            StreetLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             StreetLabel.Location = new Point(12, 123);
             StreetLabel.Name = "StreetLabel";
             StreetLabel.Size = new Size(55, 20);
@@ -83,6 +86,7 @@
             // BuildingLabel
             // 
             BuildingLabel.AutoSize = true;
+            BuildingLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             BuildingLabel.Location = new Point(12, 165);
             BuildingLabel.Name = "BuildingLabel";
             BuildingLabel.Size = new Size(71, 20);
@@ -95,6 +99,7 @@
             PostIndexTextBox.Name = "PostIndexTextBox";
             PostIndexTextBox.Size = new Size(125, 27);
             PostIndexTextBox.TabIndex = 5;
+            PostIndexTextBox.TextChanged += PostIndexTextBox_TextChanged;
             // 
             // CountryTextBox
             // 
@@ -102,6 +107,7 @@
             CountryTextBox.Name = "CountryTextBox";
             CountryTextBox.Size = new Size(175, 27);
             CountryTextBox.TabIndex = 6;
+            CountryTextBox.TextChanged += CountyTextBox_TextxChanged;
             // 
             // StreetTextBox
             // 
@@ -109,10 +115,12 @@
             StreetTextBox.Name = "StreetTextBox";
             StreetTextBox.Size = new Size(422, 27);
             StreetTextBox.TabIndex = 7;
+            StreetTextBox.TextChanged += StreetTextBox_TextChanged;
             // 
             // CityLabel
             // 
             CityLabel.AutoSize = true;
+            CityLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             CityLabel.Location = new Point(278, 89);
             CityLabel.Name = "CityLabel";
             CityLabel.Size = new Size(41, 20);
@@ -125,6 +133,7 @@
             CityTextBox.Name = "CityTextBox";
             CityTextBox.Size = new Size(185, 27);
             CityTextBox.TabIndex = 9;
+            CityTextBox.TextChanged += CityTextBox_TextChanged;
             // 
             // BuildingTextBox
             // 
@@ -132,10 +141,12 @@
             BuildingTextBox.Name = "BuildingTextBox";
             BuildingTextBox.Size = new Size(125, 27);
             BuildingTextBox.TabIndex = 10;
+            BuildingTextBox.TextChanged += BuildingTextBox_TextChanged;
             // 
             // ApartmentLabel
             // 
             ApartmentLabel.AutoSize = true;
+            ApartmentLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             ApartmentLabel.Location = new Point(278, 168);
             ApartmentLabel.Name = "ApartmentLabel";
             ApartmentLabel.Size = new Size(87, 20);
@@ -148,6 +159,7 @@
             ApartmentTextBox.Name = "ApartmentTextBox";
             ApartmentTextBox.Size = new Size(125, 27);
             ApartmentTextBox.TabIndex = 12;
+            ApartmentTextBox.TextChanged += ApartmentTextBox_TextChanged;
             // 
             // AddressControl
             // 

@@ -17,7 +17,7 @@ namespace ObjectOrientedPractics.Model {
     /// <summary>
     /// Holds data of items.
     /// </summary>
-    class Item
+    public class Item
     {
         /// <summary>
         /// Unique number of the item.
