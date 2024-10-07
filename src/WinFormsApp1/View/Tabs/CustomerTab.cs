@@ -17,7 +17,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// List of customers.
         /// </summary>
-        private List<Customer> _customersList = new List<Customer>();
+        private List<Customer> _customers = new List<Customer>();
 
         /// <summary>
         /// Variable - Customer type.
@@ -25,9 +25,11 @@ namespace ObjectOrientedPractics.View.Tabs
         private Customer _currentCustomer = new Customer();
 
         /// <summary>
-        /// Variable - Customer type.
+        /// Reterns and sets a list of cistomers.
         /// </summary>
-        private Customer _selectedCustomer = new Customer();
+        public List<Customer> Customers { get { return _customers; } set { _customers = value; } }
+
+
         public CustomerTab()
         {
             InitializeComponent();
@@ -39,8 +41,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private Customer AddItemsInfo()
         {
             string fullname = FullNameTextBox.Text;
-            string address = AddressTextBox.Text;
-            return new Customer(fullname, address);
+            return new Customer(fullname, AddressControl.AddInfoFromTextBox());
         }
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             CustomersListBox.Items.Clear();
 
-            foreach (Customer customer in _customersList)
+            foreach (Customer customer in _customers)
             {
                 CustomersListBox.Items.Add($"{customer.Id} / {customer.Fullname}");
             }
@@ -63,21 +64,19 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             FullNameTextBox.Clear();
             FullNameTextBox.BackColor = Color.White;
-
-            AddressTextBox.Clear();
-            AddressTextBox.BackColor = Color.White;
-
             IDTextBox.Clear();
         }
 
         /// <summary>
         /// Updates info about a customer in the TextBox.
         /// </summary>
-        private void UpdateItemInfo(Customer customer)
+        private void UpdateItemInfo()
         {
-            IDTextBox.Text = customer.Id.ToString();
-            FullNameTextBox.Text = customer.Fullname.ToString();
-            AddressTextBox.Text = customer.Address.ToString();
+            _currentCustomer = _customers[CustomersListBox.SelectedIndex];
+            IDTextBox.Text = _currentCustomer.Id.ToString();
+            FullNameTextBox.Text = _currentCustomer.Fullname.ToString();
+            Address selectedAddress = _currentCustomer.CustomerAddress;
+            AddressControl.SelelctedTextBoxs(selectedAddress);
         }
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
@@ -93,19 +92,6 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                _currentCustomer.Address = AddressTextBox.Text;
-                AddressTextBox.BackColor = Color.White;
-            }
-            catch (ArgumentException)
-            {
-                AddressTextBox.BackColor = Color.LightPink;
-            }
-        }
-
 
         private void AddButton_Click(object sender, EventArgs e)
         {
@@ -113,7 +99,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 // Create a list of TextBoxes to check
                 var textBoxes = new List<System.Windows.Forms.TextBox>
-                { FullNameTextBox, AddressTextBox };
+                { FullNameTextBox };
                 bool ifRed = true;
 
                 foreach (var textBox in textBoxes)
@@ -128,18 +114,18 @@ namespace ObjectOrientedPractics.View.Tabs
                 if (textBoxes.All(tb => !string.IsNullOrWhiteSpace(tb.Text)) && ifRed)
                 {
                     Customer selectedCustomer = AddItemsInfo();
-                    _customersList.Add(selectedCustomer);
+                    _customers.Add(selectedCustomer);
                     UpdateListBox();
                 }
                 else
                 {
-                    throw new Exception("Некоректные значения. Введите корректные значения для корректной работы программы.");
+                    throw new Exception("Incorrect values.");
                 }
             }
             catch (Exception ex)
             {
                 // Error message
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
@@ -150,14 +136,14 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 // No chosen elements error message
                 MessageBox.Show(
-                    "Не выбран элемент для удаления.",
-                    "Ошибка",
+                    "You didnt choose an object to delete it.",
+                    "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error,
                     MessageBoxDefaultButton.Button1);
                 return;
             }
-            _customersList.RemoveAt(CustomersListBox.SelectedIndex);
+            _customers.RemoveAt(CustomersListBox.SelectedIndex);
             CustomersListBox.Items.RemoveAt(CustomersListBox.SelectedIndex);
             ClearItemInfo();
         }
@@ -166,8 +152,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (CustomersListBox.SelectedItem != null)
             {
-                _currentCustomer = _customersList[CustomersListBox.SelectedIndex];
-                UpdateItemInfo(_currentCustomer);
+                UpdateListBox();
             }
         }
 
@@ -176,7 +161,6 @@ namespace ObjectOrientedPractics.View.Tabs
             if (CustomersListBox.SelectedItem != null)
             {
                 UpdateListBox();
-                _currentCustomer = _selectedCustomer;
             }
         }
     }

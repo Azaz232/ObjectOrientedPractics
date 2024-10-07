@@ -34,6 +34,8 @@
             AddButton = new Button();
             ItemsListBox = new ListBox();
             groupBox2 = new GroupBox();
+            CategoryComboBox = new ComboBox();
+            label5 = new Label();
             DescriptionTextBox = new TextBox();
             label4 = new Label();
             NameTextBox = new TextBox();
@@ -105,6 +107,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(CategoryComboBox);
+            groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(DescriptionTextBox);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(NameTextBox);
@@ -120,6 +124,25 @@
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Selected Item";
+            // 
+            // CategoryComboBox
+            // 
+            CategoryComboBox.FormattingEnabled = true;
+            CategoryComboBox.Location = new Point(90, 116);
+            CategoryComboBox.Name = "CategoryComboBox";
+            CategoryComboBox.Size = new Size(146, 28);
+            CategoryComboBox.TabIndex = 9;
+            CategoryComboBox.SelectedIndexChanged += CategoryComboBox_SelectedIndexChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label5.Location = new Point(7, 121);
+            label5.Name = "label5";
+            label5.Size = new Size(71, 17);
+            label5.TabIndex = 8;
+            label5.Text = "Category:";
             // 
             // DescriptionTextBox
             // 
@@ -142,16 +165,16 @@
             // 
             // NameTextBox
             // 
-            NameTextBox.Location = new Point(17, 158);
+            NameTextBox.Location = new Point(17, 199);
             NameTextBox.Multiline = true;
             NameTextBox.Name = "NameTextBox";
-            NameTextBox.Size = new Size(380, 111);
+            NameTextBox.Size = new Size(380, 70);
             NameTextBox.TabIndex = 5;
             NameTextBox.TextChanged += NameTextBox_TextChanged_1;
             // 
             // CostTextBox
             // 
-            CostTextBox.Location = new Point(53, 74);
+            CostTextBox.Location = new Point(90, 72);
             CostTextBox.Name = "CostTextBox";
             CostTextBox.Size = new Size(146, 28);
             CostTextBox.TabIndex = 4;
@@ -160,7 +183,7 @@
             // IDTextBox
             // 
             IDTextBox.Enabled = false;
-            IDTextBox.Location = new Point(53, 38);
+            IDTextBox.Location = new Point(90, 38);
             IDTextBox.Name = "IDTextBox";
             IDTextBox.ReadOnly = true;
             IDTextBox.Size = new Size(146, 28);
@@ -170,7 +193,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label3.Location = new Point(6, 123);
+            label3.Location = new Point(6, 170);
             label3.Name = "label3";
             label3.Size = new Size(55, 17);
             label3.TabIndex = 2;
@@ -227,5 +250,7 @@
         private Button RemoveButton;
         private Button AddButton;
         private TextBox DescriptionTextBox;
+        private ComboBox CategoryComboBox;
+        private Label label5;
     }
 }

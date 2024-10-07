@@ -11,20 +11,42 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Holds data of a customer.
     /// </summary>
-    class Customer
+    public class Customer
     {
         /// <summary>
         /// Unique customer number.
         /// </summary>
         private readonly int _id;
+
         /// <summary>
-        /// ПFull name of a customer.
+        /// Full name of a customer.
         /// </summary>
-        private string _fullname;
+        private string _fullname = string.Empty;
+
         /// <summary>
         /// Delivery address.
         /// </summary>
-        private string _address;
+        private Address _address = new Address();
+
+        /// <summary>
+        /// Returns unique id of a customer.
+        /// </summary>
+        public int Id{ get { return _id; } }
+
+        /// <summary>
+        /// Gets and sets an address for delivery.
+        /// </summary>
+        public Address CustomerAddress
+        {
+            get
+            {
+                return _address;
+            }
+            set
+            {
+                _address = value;
+            }
+        }
 
         /// <summary>
         /// Gets and sets the full name of a customer.
@@ -38,42 +60,30 @@ namespace ObjectOrientedPractics.Model
                 _fullname = value;
             }
         }
-        /// <summary>
-        /// Gets and sets an address for delivery.
-        /// </summary>
-        public string Address {
-            get { return _address; }
-            set
-            {
-                ValueValidator.AssertStringOnLength(value, 500, nameof(_address));
-                _address = value;
-            }
-        }
-        /// <summary>
-        /// Returns unique id of a customer.
-        /// </summary>
-        public int Id
-        {
-            get { return _id; }
-        }
+
+        
+
         /// <summary>
         /// Creates a sample of a class  <see cref="Item"/>.
         /// </summary>
         /// <param name="fullname">Полное имя покупателя.</param>
         /// <param name="address">Адрес доставки для покупателя.</param>
-        public Customer(string fullname, string address)
+         
+        public Customer(string fullname, Address address)
         {
             Fullname = fullname;
-            Address = address;
+            CustomerAddress = address;
             _id = IdGenerator.GetNextId();
         }
+
         /// <summary>
         /// Creates an empty sample of a class <see cref="Item"/>.
         /// </summary>
+         
         public Customer()
         {
             Fullname = string.Empty;
-            Address = string.Empty;
+            CustomerAddress = new Address();
             _id = IdGenerator.GetNextId();
         }
     }
