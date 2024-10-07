@@ -28,6 +28,21 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         private Address _address = new Address();
 
+
+        /// <summary>
+        /// New variable of a Cart type.                                  ))
+        /// </summary>
+        private Cart _cart = new Cart();
+
+        /// <summary> 
+        /// Gets and sets cart data.                                      ))
+        /// </summary>
+        public Cart Cart
+        {
+            get { return _cart; }
+            set { _cart = value; }
+        }
+
         /// <summary>
         /// Returns unique id of a customer.
         /// </summary>
@@ -66,14 +81,15 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Creates a sample of a class  <see cref="Item"/>.
         /// </summary>
-        /// <param name="fullname">Полное имя покупателя.</param>
-        /// <param name="address">Адрес доставки для покупателя.</param>
+        /// <param name="fullname">Full name of a customer.</param>
+        /// <param name="address">Delivery address.</param>
          
         public Customer(string fullname, Address address)
         {
             Fullname = fullname;
             CustomerAddress = address;
             _id = IdGenerator.GetNextId();
+            Cart = new Cart();
         }
 
         /// <summary>
@@ -85,6 +101,7 @@ namespace ObjectOrientedPractics.Model
             Fullname = string.Empty;
             CustomerAddress = new Address();
             _id = IdGenerator.GetNextId();
+            Cart = new Cart();  
         }
     }
 }
