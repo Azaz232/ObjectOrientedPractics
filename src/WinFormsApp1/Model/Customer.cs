@@ -30,14 +30,20 @@ namespace ObjectOrientedPractics.Model
 
 
         /// <summary>
-        /// New variable of a Cart type.                                  ))
+        /// New variable of a Cart type.                                   ))
         /// </summary>
         private Cart _cart = new Cart();
 
-        /// <summary> 
-        /// Gets and sets cart data.                                      ))
+        /// <summary>
+        /// A list of orders.                                              ))
         /// </summary>
-        public Cart Cart
+        private List<Order> _orders = new List<Order>();
+
+
+        /// <summary> 
+        /// Gets and sets cart data.                                       ))
+        /// </summary>
+        public Cart CustomerCart
         {
             get { return _cart; }
             set { _cart = value; }
@@ -76,7 +82,20 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
-        
+        /// <summary>
+        /// Gets and sets the list of orders.
+        /// </summary>
+        public List<Order> Orders
+        {
+            get
+            {
+                return _orders; 
+            }
+            set
+            {
+                _orders = value;
+            }
+        }
 
         /// <summary>
         /// Creates a sample of a class  <see cref="Item"/>.
@@ -89,19 +108,19 @@ namespace ObjectOrientedPractics.Model
             Fullname = fullname;
             CustomerAddress = address;
             _id = IdGenerator.GetNextId();
-            Cart = new Cart();
+            CustomerCart = new Cart();
         }
 
         /// <summary>
         /// Creates an empty sample of a class <see cref="Item"/>.
         /// </summary>
-         
         public Customer()
         {
             Fullname = string.Empty;
             CustomerAddress = new Address();
             _id = IdGenerator.GetNextId();
-            Cart = new Cart();  
+            CustomerCart = new Cart();
+            Orders = new List<Order>();
         }
     }
 }

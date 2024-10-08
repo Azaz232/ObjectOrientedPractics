@@ -38,7 +38,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Date of order's creation.
         /// </summary>
-        public DateTime CreationDate
+        public DateTime Date
         {
             get
             {
@@ -57,9 +57,9 @@ namespace ObjectOrientedPractics.Model
         public Address Address { get; set; } = new Address();    //   в автосвойстве уже создано поле и его автосвойство, и я сразк к автосвойству присваиваю значению (хз куда) 
 
         /// <summary>
-        /// Gets and sets a list of new items.                   ????
+        /// Gets and sets a list of new items.                                       ????
         /// </summary>
-        private List<Item> _items { get; set; } = new List<Item>();
+        public List<Item> Items { get; set; } = new List<Item>();
 
 
         /// <summary>
@@ -69,10 +69,10 @@ namespace ObjectOrientedPractics.Model
         {
             get
             {
-                if (_items.Count != 0 && _items != null)
+                if (Items.Count != 0 && Items != null)
                 {
                     double amount = 0.0;
-                    foreach (var item in _items)
+                    foreach (var item in Items)
                     {
                         amount += item.Cost;
                     }
@@ -89,15 +89,16 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Creates a sample of a class <see cref="Order"/>.
         /// </summary>
-        /// <param name="status">Статус заказа.</param>
-        /// <param name="address">Адрес доставки.</param>
-        /// <param name="items">Список товаров заказа.</param>
+        /// <param name="status">Order's status.</param>
+        /// <param name="address">Delivery address.</param>
+        /// <param name="items">List of items.</param>
         public Order(OrderStatus status, Address address, List<Item> items)               //  ??????
         {
             _id = IdGenerator.GetNextId();
             Status = status;
             Address = address;
-            _items = items;
+            Items = items;
+            _date = DateTime.Now;
         }
 
         /// <summary>
@@ -106,6 +107,9 @@ namespace ObjectOrientedPractics.Model
         public Order()
         {
             _id = IdGenerator.GetNextId();
+            _date = DateTime.Now;
+            Status = 0;
+            Items = new List<Item>();
         }
 
     }
