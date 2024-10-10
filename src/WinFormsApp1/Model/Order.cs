@@ -92,10 +92,10 @@ namespace ObjectOrientedPractics.Model
         /// <param name="status">Order's status.</param>
         /// <param name="address">Delivery address.</param>
         /// <param name="items">List of items.</param>
-        public Order(OrderStatus status, Address address, List<Item> items)               //  ??????
+        public Order(Address address, List<Item> items)               //  ??????
         {
             _id = IdGenerator.GetNextId();
-            Status = status;
+            Status = 0;
             Address = address;
             Items = items;
             _date = DateTime.Now;
