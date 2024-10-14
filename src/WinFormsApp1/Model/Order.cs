@@ -97,8 +97,11 @@ namespace ObjectOrientedPractics.Model
             _id = IdGenerator.GetNextId();
             Status = 0;
             Address = address;
-            Items = items;
             _date = DateTime.Now;
+            foreach (Item item in items)
+            {
+                Items.Add(item);
+            }
         }
 
         /// <summary>

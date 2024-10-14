@@ -28,45 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Model.Address address3 = new Model.Address();
             SelectedOrderGroupBox = new GroupBox();
-            comboBox1 = new ComboBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            StatusComboBox = new ComboBox();
+            CreatedTextBox = new TextBox();
+            IdTextBox = new TextBox();
             StatusLabel = new Label();
             CreatedLabel = new Label();
             IdLabel = new Label();
-            DeliveryAddressGroupBox = new GroupBox();
-            CityTextBox = new TextBox();
-            ApartmentTextBox = new TextBox();
-            BuildingTextBox = new TextBox();
-            StreetTextBox = new TextBox();
-            CountryTextBox = new TextBox();
-            PostIndexTextBox = new TextBox();
-            ApartmentLabel = new Label();
-            CityLabel = new Label();
-            BuildingLabel = new Label();
-            StreetLabel = new Label();
-            CountryLabel = new Label();
-            PostIndexLabel = new Label();
             OrderItemsLabel = new Label();
             OrderItemsListBox = new ListBox();
             AmountLabel = new Label();
             TotalCostLabel = new Label();
-            dataGridView1 = new DataGridView();
+            OrdersDataGridView = new DataGridView();
             IdColumn = new DataGridViewTextBoxColumn();
             CreatedColumn = new DataGridViewTextBoxColumn();
             OrderStatusColumn = new DataGridViewTextBoxColumn();
             CustomerFullNameColumn = new DataGridViewTextBoxColumn();
+            AddressControl = new Controls.AddressControl();
             SelectedOrderGroupBox.SuspendLayout();
-            DeliveryAddressGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).BeginInit();
             SuspendLayout();
             // 
             // SelectedOrderGroupBox
             // 
-            SelectedOrderGroupBox.Controls.Add(comboBox1);
-            SelectedOrderGroupBox.Controls.Add(textBox2);
-            SelectedOrderGroupBox.Controls.Add(textBox1);
+            SelectedOrderGroupBox.Controls.Add(StatusComboBox);
+            SelectedOrderGroupBox.Controls.Add(CreatedTextBox);
+            SelectedOrderGroupBox.Controls.Add(IdTextBox);
             SelectedOrderGroupBox.Controls.Add(StatusLabel);
             SelectedOrderGroupBox.Controls.Add(CreatedLabel);
             SelectedOrderGroupBox.Controls.Add(IdLabel);
@@ -77,27 +65,28 @@
             SelectedOrderGroupBox.TabStop = false;
             SelectedOrderGroupBox.Text = "Selected Order";
             // 
-            // comboBox1
+            // StatusComboBox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(65, 91);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 5;
+            StatusComboBox.FormattingEnabled = true;
+            StatusComboBox.Location = new Point(65, 91);
+            StatusComboBox.Name = "StatusComboBox";
+            StatusComboBox.Size = new Size(121, 23);
+            StatusComboBox.TabIndex = 5;
+            StatusComboBox.SelectedIndexChanged += StatusComboBox_SelectedIndexChanged;
             // 
-            // textBox2
+            // CreatedTextBox
             // 
-            textBox2.Location = new Point(65, 56);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(121, 23);
-            textBox2.TabIndex = 4;
+            CreatedTextBox.Location = new Point(65, 56);
+            CreatedTextBox.Name = "CreatedTextBox";
+            CreatedTextBox.Size = new Size(121, 23);
+            CreatedTextBox.TabIndex = 4;
             // 
-            // textBox1
+            // IdTextBox
             // 
-            textBox1.Location = new Point(65, 22);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(121, 23);
-            textBox1.TabIndex = 3;
+            IdTextBox.Location = new Point(65, 22);
+            IdTextBox.Name = "IdTextBox";
+            IdTextBox.Size = new Size(121, 23);
+            IdTextBox.TabIndex = 3;
             // 
             // StatusLabel
             // 
@@ -126,123 +115,6 @@
             IdLabel.TabIndex = 0;
             IdLabel.Text = "ID:";
             // 
-            // DeliveryAddressGroupBox
-            // 
-            DeliveryAddressGroupBox.Controls.Add(CityTextBox);
-            DeliveryAddressGroupBox.Controls.Add(ApartmentTextBox);
-            DeliveryAddressGroupBox.Controls.Add(BuildingTextBox);
-            DeliveryAddressGroupBox.Controls.Add(StreetTextBox);
-            DeliveryAddressGroupBox.Controls.Add(CountryTextBox);
-            DeliveryAddressGroupBox.Controls.Add(PostIndexTextBox);
-            DeliveryAddressGroupBox.Controls.Add(ApartmentLabel);
-            DeliveryAddressGroupBox.Controls.Add(CityLabel);
-            DeliveryAddressGroupBox.Controls.Add(BuildingLabel);
-            DeliveryAddressGroupBox.Controls.Add(StreetLabel);
-            DeliveryAddressGroupBox.Controls.Add(CountryLabel);
-            DeliveryAddressGroupBox.Controls.Add(PostIndexLabel);
-            DeliveryAddressGroupBox.Location = new Point(326, 147);
-            DeliveryAddressGroupBox.Name = "DeliveryAddressGroupBox";
-            DeliveryAddressGroupBox.Size = new Size(394, 180);
-            DeliveryAddressGroupBox.TabIndex = 1;
-            DeliveryAddressGroupBox.TabStop = false;
-            DeliveryAddressGroupBox.Text = "Delivery Address";
-            // 
-            // CityTextBox
-            // 
-            CityTextBox.Location = new Point(272, 62);
-            CityTextBox.Name = "CityTextBox";
-            CityTextBox.Size = new Size(105, 23);
-            CityTextBox.TabIndex = 11;
-            // 
-            // ApartmentTextBox
-            // 
-            ApartmentTextBox.Location = new Point(262, 137);
-            ApartmentTextBox.Name = "ApartmentTextBox";
-            ApartmentTextBox.Size = new Size(115, 23);
-            ApartmentTextBox.TabIndex = 10;
-            // 
-            // BuildingTextBox
-            // 
-            BuildingTextBox.Location = new Point(77, 137);
-            BuildingTextBox.Name = "BuildingTextBox";
-            BuildingTextBox.Size = new Size(52, 23);
-            BuildingTextBox.TabIndex = 9;
-            // 
-            // StreetTextBox
-            // 
-            StreetTextBox.Location = new Point(77, 98);
-            StreetTextBox.Name = "StreetTextBox";
-            StreetTextBox.Size = new Size(300, 23);
-            StreetTextBox.TabIndex = 8;
-            // 
-            // CountryTextBox
-            // 
-            CountryTextBox.Location = new Point(77, 62);
-            CountryTextBox.Name = "CountryTextBox";
-            CountryTextBox.Size = new Size(152, 23);
-            CountryTextBox.TabIndex = 7;
-            // 
-            // PostIndexTextBox
-            // 
-            PostIndexTextBox.Location = new Point(77, 28);
-            PostIndexTextBox.Name = "PostIndexTextBox";
-            PostIndexTextBox.Size = new Size(100, 23);
-            PostIndexTextBox.TabIndex = 6;
-            // 
-            // ApartmentLabel
-            // 
-            ApartmentLabel.AutoSize = true;
-            ApartmentLabel.Location = new Point(189, 140);
-            ApartmentLabel.Name = "ApartmentLabel";
-            ApartmentLabel.Size = new Size(67, 15);
-            ApartmentLabel.TabIndex = 5;
-            ApartmentLabel.Text = "Apartment:";
-            // 
-            // CityLabel
-            // 
-            CityLabel.AutoSize = true;
-            CityLabel.Location = new Point(235, 65);
-            CityLabel.Name = "CityLabel";
-            CityLabel.Size = new Size(31, 15);
-            CityLabel.TabIndex = 4;
-            CityLabel.Text = "City:";
-            // 
-            // BuildingLabel
-            // 
-            BuildingLabel.AutoSize = true;
-            BuildingLabel.Location = new Point(6, 140);
-            BuildingLabel.Name = "BuildingLabel";
-            BuildingLabel.Size = new Size(54, 15);
-            BuildingLabel.TabIndex = 3;
-            BuildingLabel.Text = "Building:";
-            // 
-            // StreetLabel
-            // 
-            StreetLabel.AutoSize = true;
-            StreetLabel.Location = new Point(6, 101);
-            StreetLabel.Name = "StreetLabel";
-            StreetLabel.Size = new Size(40, 15);
-            StreetLabel.TabIndex = 2;
-            StreetLabel.Text = "Street:";
-            // 
-            // CountryLabel
-            // 
-            CountryLabel.AutoSize = true;
-            CountryLabel.Location = new Point(6, 65);
-            CountryLabel.Name = "CountryLabel";
-            CountryLabel.Size = new Size(53, 15);
-            CountryLabel.TabIndex = 1;
-            CountryLabel.Text = "Country:";
-            // 
-            // PostIndexLabel
-            // 
-            PostIndexLabel.AutoSize = true;
-            PostIndexLabel.Location = new Point(6, 31);
-            PostIndexLabel.Name = "PostIndexLabel";
-            PostIndexLabel.Size = new Size(65, 15);
-            PostIndexLabel.TabIndex = 0;
-            PostIndexLabel.Text = "Post Index:";
-            // 
             // OrderItemsLabel
             // 
             OrderItemsLabel.AutoSize = true;
@@ -259,7 +131,7 @@
             OrderItemsListBox.ItemHeight = 15;
             OrderItemsListBox.Location = new Point(326, 357);
             OrderItemsListBox.Name = "OrderItemsListBox";
-            OrderItemsListBox.Size = new Size(394, 109);
+            OrderItemsListBox.Size = new Size(460, 109);
             OrderItemsListBox.TabIndex = 3;
             // 
             // AmountLabel
@@ -282,21 +154,22 @@
             TotalCostLabel.TabIndex = 5;
             TotalCostLabel.Text = "555";
             // 
-            // dataGridView1
+            // OrdersDataGridView
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { IdColumn, CreatedColumn, OrderStatusColumn, CustomerFullNameColumn });
-            dataGridView1.Location = new Point(14, 12);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 30;
-            dataGridView1.Size = new Size(306, 454);
-            dataGridView1.TabIndex = 6;
+            OrdersDataGridView.AllowUserToAddRows = false;
+            OrdersDataGridView.AllowUserToDeleteRows = false;
+            OrdersDataGridView.AllowUserToResizeColumns = false;
+            OrdersDataGridView.AllowUserToResizeRows = false;
+            OrdersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            OrdersDataGridView.Columns.AddRange(new DataGridViewColumn[] { IdColumn, CreatedColumn, OrderStatusColumn, CustomerFullNameColumn });
+            OrdersDataGridView.Location = new Point(14, 12);
+            OrdersDataGridView.MultiSelect = false;
+            OrdersDataGridView.Name = "OrdersDataGridView";
+            OrdersDataGridView.RightToLeft = RightToLeft.No;
+            OrdersDataGridView.RowHeadersWidth = 30;
+            OrdersDataGridView.Size = new Size(306, 454);
+            OrdersDataGridView.TabIndex = 6;
+            OrdersDataGridView.SelectionChanged += OrdersDataGridView_SelectionChanged;
             // 
             // IdColumn
             // 
@@ -318,24 +191,37 @@
             CustomerFullNameColumn.HeaderText = "Customer FullName";
             CustomerFullNameColumn.Name = "CustomerFullNameColumn";
             // 
+            // AddressControl
+            // 
+            AddressControl.Location = new Point(326, 145);
+            AddressControl.Margin = new Padding(3, 2, 3, 2);
+            AddressControl.Name = "AddressControl";
+            address3.Apartment = "";
+            address3.Building = "";
+            address3.City = "";
+            address3.Country = "";
+            address3.Index = 100000;
+            address3.Street = "";
+            AddressControl.OurAddress = address3;
+            AddressControl.Size = new Size(472, 183);
+            AddressControl.TabIndex = 7;
+            // 
             // OrdersTab
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(dataGridView1);
+            Controls.Add(AddressControl);
+            Controls.Add(OrdersDataGridView);
             Controls.Add(TotalCostLabel);
             Controls.Add(AmountLabel);
             Controls.Add(OrderItemsListBox);
             Controls.Add(OrderItemsLabel);
-            Controls.Add(DeliveryAddressGroupBox);
             Controls.Add(SelectedOrderGroupBox);
             Name = "OrdersTab";
-            Size = new Size(731, 554);
+            Size = new Size(814, 554);
             SelectedOrderGroupBox.ResumeLayout(false);
             SelectedOrderGroupBox.PerformLayout();
-            DeliveryAddressGroupBox.ResumeLayout(false);
-            DeliveryAddressGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -346,32 +232,20 @@
         private Label IdLabel;
         private Label StatusLabel;
         private Label CreatedLabel;
-        private ComboBox comboBox1;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private GroupBox DeliveryAddressGroupBox;
-        private Label BuildingLabel;
-        private Label StreetLabel;
-        private Label CountryLabel;
-        private Label PostIndexLabel;
-        private TextBox CityTextBox;
-        private TextBox ApartmentTextBox;
-        private TextBox BuildingTextBox;
-        private TextBox StreetTextBox;
-        private TextBox CountryTextBox;
-        private TextBox PostIndexTextBox;
-        private Label ApartmentLabel;
-        private Label CityLabel;
+        private ComboBox StatusComboBox;
+        private TextBox CreatedTextBox;
+        private TextBox IdTextBox;
         private Label OrderItemsLabel;
         private ListBox OrderItemsListBox;
         private Label AmountLabel;
         private Label TotalCostLabel;
-        private DataGridView dataGridView1;
+        private DataGridView OrdersDataGridView;
         private DataGridViewTextBoxColumn IdColumn;
         private DataGridViewTextBoxColumn CreatedColumn;
         private DataGridViewTextBoxColumn OrderStatusColumn;
         private DataGridViewTextBoxColumn CustomerFullNameColumn;
         private Label label1;
         private GroupBox groupBox1;
+        private Controls.AddressControl AddressControl;
     }
 }

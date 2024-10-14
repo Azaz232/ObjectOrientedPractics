@@ -29,6 +29,9 @@ namespace WinFormsApp1
                 case 2:
                     cartTab1.RefreshData();
                     break;
+                case 3:
+                    ordersTab1.RefreshData();
+                    break;
             }
         }
     }

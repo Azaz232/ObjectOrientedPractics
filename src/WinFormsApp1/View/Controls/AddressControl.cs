@@ -33,14 +33,14 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Updates information in TextBoxes.
         /// </summary>
-        public void SelelctedTextBoxs(Address address)
+        public void SelelctedTextBoxs()
         {
-            PostIndexTextBox.Text = address.Index.ToString();
-            CountryTextBox.Text = address.Country.ToString();
-            CityTextBox.Text = address.City.ToString();
-            StreetTextBox.Text = address.Street.ToString();
-            BuildingTextBox.Text = address.Building.ToString();
-            ApartmentTextBox.Text = address.Apartment.ToString();
+            PostIndexTextBox.Text = OurAddress.Index.ToString();
+            CountryTextBox.Text = OurAddress.Country.ToString();
+            CityTextBox.Text = OurAddress.City.ToString();
+            StreetTextBox.Text = OurAddress.Street.ToString();
+            BuildingTextBox.Text = OurAddress.Building.ToString();
+            ApartmentTextBox.Text = OurAddress.Apartment.ToString();
         }
 
         /// <summary>

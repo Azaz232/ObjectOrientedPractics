@@ -76,7 +76,7 @@ namespace ObjectOrientedPractics.View.Tabs
             IDTextBox.Text = _currentCustomer.Id.ToString();
             FullNameTextBox.Text = _currentCustomer.Fullname.ToString();
             Address selectedAddress = _currentCustomer.CustomerAddress;
-            AddressControl.SelelctedTextBoxs(selectedAddress);
+            AddressControl.SelelctedTextBoxs();
         }
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
