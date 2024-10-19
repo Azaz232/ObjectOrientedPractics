@@ -56,7 +56,7 @@
             tabControl1.Margin = new Padding(3, 2, 3, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(736, 620);
+            tabControl1.Size = new Size(798, 615);
             tabControl1.TabIndex = 0;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
@@ -67,7 +67,7 @@
             ItemTab.Margin = new Padding(3, 2, 3, 2);
             ItemTab.Name = "ItemTab";
             ItemTab.Padding = new Padding(3, 2, 3, 2);
-            ItemTab.Size = new Size(601, 548);
+            ItemTab.Size = new Size(612, 565);
             ItemTab.TabIndex = 0;
             ItemTab.Text = "Items";
             ItemTab.UseVisualStyleBackColor = true;
@@ -77,8 +77,9 @@
             itemsTab1.Dock = DockStyle.Fill;
             itemsTab1.Location = new Point(3, 2);
             itemsTab1.Margin = new Padding(3, 2, 3, 2);
+            itemsTab1.MinimumSize = new Size(614, 417);
             itemsTab1.Name = "itemsTab1";
-            itemsTab1.Size = new Size(595, 544);
+            itemsTab1.Size = new Size(614, 561);
             itemsTab1.TabIndex = 0;
             // 
             // CustomerTab
@@ -88,7 +89,7 @@
             CustomerTab.Margin = new Padding(3, 2, 3, 2);
             CustomerTab.Name = "CustomerTab";
             CustomerTab.Padding = new Padding(3, 2, 3, 2);
-            CustomerTab.Size = new Size(601, 548);
+            CustomerTab.Size = new Size(699, 565);
             CustomerTab.TabIndex = 1;
             CustomerTab.Text = "Customers";
             CustomerTab.UseVisualStyleBackColor = true;
@@ -98,8 +99,9 @@
             customer1.Dock = DockStyle.Fill;
             customer1.Location = new Point(3, 2);
             customer1.Margin = new Padding(3, 2, 3, 2);
+            customer1.MinimumSize = new Size(716, 437);
             customer1.Name = "customer1";
-            customer1.Size = new Size(595, 544);
+            customer1.Size = new Size(716, 561);
             customer1.TabIndex = 0;
             // 
             // CartsTab
@@ -107,7 +109,7 @@
             CartsTab.Controls.Add(cartTab1);
             CartsTab.Location = new Point(4, 24);
             CartsTab.Name = "CartsTab";
-            CartsTab.Size = new Size(601, 548);
+            CartsTab.Size = new Size(699, 565);
             CartsTab.TabIndex = 2;
             CartsTab.Text = "Carts";
             CartsTab.UseVisualStyleBackColor = true;
@@ -118,8 +120,9 @@
             cartTab1.Dock = DockStyle.Fill;
             cartTab1.Items = null;
             cartTab1.Location = new Point(0, 0);
+            cartTab1.MinimumSize = new Size(556, 403);
             cartTab1.Name = "cartTab1";
-            cartTab1.Size = new Size(601, 548);
+            cartTab1.Size = new Size(699, 565);
             cartTab1.TabIndex = 0;
             // 
             // OrdersTab
@@ -127,7 +130,7 @@
             OrdersTab.Controls.Add(ordersTab1);
             OrdersTab.Location = new Point(4, 24);
             OrdersTab.Name = "OrdersTab";
-            OrdersTab.Size = new Size(728, 592);
+            OrdersTab.Size = new Size(790, 587);
             OrdersTab.TabIndex = 3;
             OrdersTab.Text = "Orders";
             OrdersTab.UseVisualStyleBackColor = true;
@@ -136,17 +139,19 @@
             // 
             ordersTab1.Dock = DockStyle.Fill;
             ordersTab1.Location = new Point(0, 0);
+            ordersTab1.MinimumSize = new Size(806, 596);
             ordersTab1.Name = "ordersTab1";
-            ordersTab1.Size = new Size(728, 592);
+            ordersTab1.Size = new Size(806, 596);
             ordersTab1.TabIndex = 0;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(736, 620);
+            ClientSize = new Size(798, 615);
             Controls.Add(tabControl1);
             Margin = new Padding(3, 2, 3, 2);
+            MinimumSize = new Size(814, 654);
             Name = "MainForm";
             Text = "Form1";
             tabControl1.ResumeLayout(false);

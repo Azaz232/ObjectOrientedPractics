@@ -30,18 +30,18 @@ namespace ObjectOrientedPractics.Model
 
 
         /// <summary>
-        /// New variable of a Cart type.                                   ))
+        /// New variable of a Cart type.                                 
         /// </summary>
         private Cart _cart = new Cart();
 
         /// <summary>
-        /// A list of orders.                                              ))
+        /// A list of orders.                                            
         /// </summary>
         private List<Order> _orders = new List<Order>();
 
 
         /// <summary> 
-        /// Gets and sets cart data.                                       ))
+        /// Gets and sets cart data.                                      
         /// </summary>
         public Cart CustomerCart
         {
@@ -101,12 +101,11 @@ namespace ObjectOrientedPractics.Model
         /// Creates a sample of a class  <see cref="Item"/>.
         /// </summary>
         /// <param name="fullname">Full name of a customer.</param>
-        /// <param name="address">Delivery address.</param>
          
-        public Customer(string fullname, Address address)
+        public Customer(string fullname)
         {
             Fullname = fullname;
-            CustomerAddress = address;
+            CustomerAddress = new Address();
             _id = IdGenerator.GetNextId();
             CustomerCart = new Cart();
         }

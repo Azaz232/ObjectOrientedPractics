@@ -48,7 +48,7 @@ namespace ObjectOrientedPractics.View.Tabs
             string description = DescriptionTextBox.Text;
             double cost = double.Parse(CostTextBox.Text);
             Category category = (Category)CategoryComboBox.SelectedItem;
-            return new Model.Item(name, description, cost, category);
+            return new Model.Item(name, description, cost);
         }
 
         /// <summary>
@@ -184,7 +184,8 @@ namespace ObjectOrientedPractics.View.Tabs
                 if (TextBoxes.All(tb => !string.IsNullOrWhiteSpace(tb.Text))
                     && CategoryComboBox.SelectedItem != null && RedBox)
                 {
-                    Model.Item selectedItem = AddItemsInfo();
+                    Item selectedItem = AddItemsInfo();
+                    selectedItem.Category = (Category)CategoryComboBox.SelectedItem;
                     _items.Add(selectedItem);
                     UpdateListBox();
                 }

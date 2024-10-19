@@ -54,10 +54,10 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Gets ans sets delivery Address.
         /// </summary>
-        public Address Address { get; set; } = new Address();    //   в автосвойстве уже создано поле и его автосвойство, и я сразк к автосвойству присваиваю значению (хз куда) 
+        public Address Address { get; set; } = new Address();   
 
         /// <summary>
-        /// Gets and sets a list of new items.                                       ????
+        /// Gets and sets a list of new items.                                 
         /// </summary>
         public List<Item> Items { get; set; } = new List<Item>();
 
@@ -92,10 +92,10 @@ namespace ObjectOrientedPractics.Model
         /// <param name="status">Order's status.</param>
         /// <param name="address">Delivery address.</param>
         /// <param name="items">List of items.</param>
-        public Order(Address address, List<Item> items)               //  ??????
+        public Order(Address address, List<Item> items)        
         {
             _id = IdGenerator.GetNextId();
-            Status = 0;
+            Status = new OrderStatus();
             Address = address;
             _date = DateTime.Now;
             foreach (Item item in items)
@@ -111,7 +111,7 @@ namespace ObjectOrientedPractics.Model
         {
             _id = IdGenerator.GetNextId();
             _date = DateTime.Now;
-            Status = 0;
+            Status = new OrderStatus();
             Items = new List<Item>();
         }
 
