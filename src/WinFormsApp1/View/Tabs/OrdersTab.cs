@@ -54,8 +54,23 @@ namespace ObjectOrientedPractics.View.Tabs
             OrdersDataGridView.Rows.Clear();
             _orders = new List<Order>();
             UpdateOrders();
+            //RefreshDataGrid();
             LoadStatusComboBox();
         }
+
+
+        //public void RefreshDataGrid()
+        //{
+        //    OrdersDataGridView.Rows.Clear();
+
+        //    foreach (Order order in _orders)
+        //    {
+        //        OrdersDataGridView.Rows.Add(order.Id, order.Date, order.Status, /*$"{order.Address.Country}, " +
+        //            $"{order.Address.City}, {order.Address.Street}, {order.Address.Building}," +
+        //            $"{order.Address.Apartment}"*/ );
+        //    }
+        //}
+
 
         /// <summary>
         /// Updates orders in DataGridView.
@@ -101,6 +116,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void FillOrderItemsListBox()
         {
             OrderItemsListBox.Items.Clear();
+
             foreach (Item item in _orders[_selectedOrderIndex].Items)
             {
                 OrderItemsListBox.Items.Add(item.Name);
@@ -133,6 +149,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 string ourStatus = StatusComboBox.Text;
                 OrderStatus orderStatus = (OrderStatus)Enum.Parse(typeof(OrderStatus), ourStatus);
                 _selectedOrder.Status = orderStatus;
+                //RefreshDataGrid();
             }
             catch (Exception)
             {
