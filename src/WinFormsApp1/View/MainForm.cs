@@ -20,6 +20,9 @@ namespace WinFormsApp1
             cartTab1.Customers = _store.Customers;
 
             ordersTab1.Customers = _store.Customers;
+
+            priorityOrderTab1.Customers = _store.Customers;
+            priorityOrderTab1.Items = _store.Items;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -30,6 +33,9 @@ namespace WinFormsApp1
                     cartTab1.RefreshData();
                     break;
                 case 3:
+                    ordersTab1.RefreshData();
+                    break;
+                case 4:
                     ordersTab1.RefreshData();
                     break;
             }

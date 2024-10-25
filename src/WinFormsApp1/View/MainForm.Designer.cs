@@ -38,11 +38,14 @@
             cartTab1 = new ObjectOrientedPractics.View.Tabs.CartTab();
             OrdersTab = new TabPage();
             ordersTab1 = new ObjectOrientedPractics.View.Tabs.OrdersTab();
+            PriorityOrdersTab = new TabPage();
+            priorityOrderTab1 = new ObjectOrientedPractics.View.Tabs.PriorityOrderTab();
             tabControl1.SuspendLayout();
             ItemTab.SuspendLayout();
             CustomerTab.SuspendLayout();
             CartsTab.SuspendLayout();
             OrdersTab.SuspendLayout();
+            PriorityOrdersTab.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -51,12 +54,13 @@
             tabControl1.Controls.Add(CustomerTab);
             tabControl1.Controls.Add(CartsTab);
             tabControl1.Controls.Add(OrdersTab);
+            tabControl1.Controls.Add(PriorityOrdersTab);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
             tabControl1.Margin = new Padding(3, 2, 3, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(798, 615);
+            tabControl1.Size = new Size(926, 615);
             tabControl1.TabIndex = 0;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
@@ -67,7 +71,7 @@
             ItemTab.Margin = new Padding(3, 2, 3, 2);
             ItemTab.Name = "ItemTab";
             ItemTab.Padding = new Padding(3, 2, 3, 2);
-            ItemTab.Size = new Size(790, 587);
+            ItemTab.Size = new Size(918, 587);
             ItemTab.TabIndex = 0;
             ItemTab.Text = "Items";
             ItemTab.UseVisualStyleBackColor = true;
@@ -79,7 +83,7 @@
             itemsTab1.Margin = new Padding(3, 2, 3, 2);
             itemsTab1.MinimumSize = new Size(614, 417);
             itemsTab1.Name = "itemsTab1";
-            itemsTab1.Size = new Size(784, 583);
+            itemsTab1.Size = new Size(912, 583);
             itemsTab1.TabIndex = 0;
             // 
             // CustomerTab
@@ -89,7 +93,7 @@
             CustomerTab.Margin = new Padding(3, 2, 3, 2);
             CustomerTab.Name = "CustomerTab";
             CustomerTab.Padding = new Padding(3, 2, 3, 2);
-            CustomerTab.Size = new Size(790, 587);
+            CustomerTab.Size = new Size(918, 587);
             CustomerTab.TabIndex = 1;
             CustomerTab.Text = "Customers";
             CustomerTab.UseVisualStyleBackColor = true;
@@ -101,7 +105,7 @@
             customer1.Margin = new Padding(3, 2, 3, 2);
             customer1.MinimumSize = new Size(716, 437);
             customer1.Name = "customer1";
-            customer1.Size = new Size(784, 583);
+            customer1.Size = new Size(912, 583);
             customer1.TabIndex = 0;
             // 
             // CartsTab
@@ -109,7 +113,7 @@
             CartsTab.Controls.Add(cartTab1);
             CartsTab.Location = new Point(4, 24);
             CartsTab.Name = "CartsTab";
-            CartsTab.Size = new Size(790, 587);
+            CartsTab.Size = new Size(918, 587);
             CartsTab.TabIndex = 2;
             CartsTab.Text = "Carts";
             CartsTab.UseVisualStyleBackColor = true;
@@ -122,7 +126,7 @@
             cartTab1.Location = new Point(0, 0);
             cartTab1.MinimumSize = new Size(556, 403);
             cartTab1.Name = "cartTab1";
-            cartTab1.Size = new Size(790, 587);
+            cartTab1.Size = new Size(918, 587);
             cartTab1.TabIndex = 0;
             // 
             // OrdersTab
@@ -130,7 +134,7 @@
             OrdersTab.Controls.Add(ordersTab1);
             OrdersTab.Location = new Point(4, 24);
             OrdersTab.Name = "OrdersTab";
-            OrdersTab.Size = new Size(790, 587);
+            OrdersTab.Size = new Size(918, 587);
             OrdersTab.TabIndex = 3;
             OrdersTab.Text = "Orders";
             OrdersTab.UseVisualStyleBackColor = true;
@@ -141,14 +145,33 @@
             ordersTab1.Location = new Point(0, 0);
             ordersTab1.MinimumSize = new Size(806, 596);
             ordersTab1.Name = "ordersTab1";
-            ordersTab1.Size = new Size(806, 596);
+            ordersTab1.Size = new Size(918, 596);
             ordersTab1.TabIndex = 0;
+            // 
+            // PriorityOrdersTab
+            // 
+            PriorityOrdersTab.Controls.Add(priorityOrderTab1);
+            PriorityOrdersTab.Location = new Point(4, 24);
+            PriorityOrdersTab.Name = "PriorityOrdersTab";
+            PriorityOrdersTab.Padding = new Padding(3);
+            PriorityOrdersTab.Size = new Size(918, 587);
+            PriorityOrdersTab.TabIndex = 4;
+            PriorityOrdersTab.Text = "PriorityOrders";
+            PriorityOrdersTab.UseVisualStyleBackColor = true;
+            // 
+            // priorityOrderTab1
+            // 
+            priorityOrderTab1.Dock = DockStyle.Fill;
+            priorityOrderTab1.Location = new Point(3, 3);
+            priorityOrderTab1.Name = "priorityOrderTab1";
+            priorityOrderTab1.Size = new Size(912, 581);
+            priorityOrderTab1.TabIndex = 0;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(798, 615);
+            ClientSize = new Size(926, 615);
             Controls.Add(tabControl1);
             Margin = new Padding(3, 2, 3, 2);
             MinimumSize = new Size(814, 654);
@@ -159,6 +182,7 @@
             CustomerTab.ResumeLayout(false);
             CartsTab.ResumeLayout(false);
             OrdersTab.ResumeLayout(false);
+            PriorityOrdersTab.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -173,5 +197,7 @@
         private ObjectOrientedPractics.View.Tabs.CartTab cartTab1;
         private TabPage OrdersTab;
         private ObjectOrientedPractics.View.Tabs.OrdersTab ordersTab1;
+        private TabPage PriorityOrdersTab;
+        private ObjectOrientedPractics.View.Tabs.PriorityOrderTab priorityOrderTab1;
     }
 }
