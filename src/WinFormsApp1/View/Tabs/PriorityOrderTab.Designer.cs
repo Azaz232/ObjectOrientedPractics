@@ -65,7 +65,7 @@
             // AddressControl
             // 
             AddressControl.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            AddressControl.Location = new Point(424, 136);
+            AddressControl.Location = new Point(376, 140);
             AddressControl.Margin = new Padding(3, 2, 3, 2);
             AddressControl.MinimumSize = new Size(390, 180);
             AddressControl.Name = "AddressControl";
@@ -76,7 +76,7 @@
             address1.Index = 100000;
             address1.Street = "";
             AddressControl.OurAddress = address1;
-            AddressControl.Size = new Size(543, 180);
+            AddressControl.Size = new Size(484, 180);
             AddressControl.TabIndex = 9;
             // 
             // SelectedOrderGroupBox
@@ -89,20 +89,21 @@
             SelectedOrderGroupBox.Controls.Add(StatusLabel);
             SelectedOrderGroupBox.Controls.Add(CreatedLabel);
             SelectedOrderGroupBox.Controls.Add(IdLabel);
-            SelectedOrderGroupBox.Location = new Point(442, 3);
+            SelectedOrderGroupBox.Location = new Point(376, 7);
             SelectedOrderGroupBox.Name = "SelectedOrderGroupBox";
-            SelectedOrderGroupBox.Size = new Size(449, 128);
+            SelectedOrderGroupBox.Size = new Size(454, 128);
             SelectedOrderGroupBox.TabIndex = 8;
             SelectedOrderGroupBox.TabStop = false;
             SelectedOrderGroupBox.Text = "Selected Order";
             // 
             // PriorityOptionsGroupBox
             // 
+            PriorityOptionsGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             PriorityOptionsGroupBox.Controls.Add(DeliveryTimeComboBox);
             PriorityOptionsGroupBox.Controls.Add(DeliveryTimeLabel);
-            PriorityOptionsGroupBox.Location = new Point(210, 0);
+            PriorityOptionsGroupBox.Location = new Point(192, 0);
             PriorityOptionsGroupBox.Name = "PriorityOptionsGroupBox";
-            PriorityOptionsGroupBox.Size = new Size(237, 93);
+            PriorityOptionsGroupBox.Size = new Size(256, 114);
             PriorityOptionsGroupBox.TabIndex = 6;
             PriorityOptionsGroupBox.TabStop = false;
             PriorityOptionsGroupBox.Text = "Priority Options";
@@ -110,9 +111,9 @@
             // DeliveryTimeComboBox
             // 
             DeliveryTimeComboBox.FormattingEnabled = true;
-            DeliveryTimeComboBox.Location = new Point(110, 26);
+            DeliveryTimeComboBox.Location = new Point(93, 26);
             DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
-            DeliveryTimeComboBox.Size = new Size(121, 23);
+            DeliveryTimeComboBox.Size = new Size(85, 23);
             DeliveryTimeComboBox.TabIndex = 1;
             DeliveryTimeComboBox.Text = "9:00 - 11:00";
             DeliveryTimeComboBox.SelectedIndexChanged += DeliveryTimeComboBox_SelectedIndexChanged;
@@ -190,7 +191,7 @@
             // 
             OrderItemsGroupBox.Controls.Add(CustomerGroupBox2);
             OrderItemsGroupBox.Controls.Add(OrderItemsListBox);
-            OrderItemsGroupBox.Location = new Point(433, 331);
+            OrderItemsGroupBox.Location = new Point(382, 325);
             OrderItemsGroupBox.Name = "OrderItemsGroupBox";
             OrderItemsGroupBox.Size = new Size(522, 249);
             OrderItemsGroupBox.TabIndex = 11;
@@ -299,14 +300,15 @@
             OrdersDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             OrdersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             OrdersDataGridView.Columns.AddRange(new DataGridViewColumn[] { IdColumn, CreatedColumn, OrderStatusColumn, CustomerFullNameColumn });
-            OrdersDataGridView.Location = new Point(19, 7);
+            OrdersDataGridView.Location = new Point(18, 13);
             OrdersDataGridView.MinimumSize = new Size(306, 456);
             OrdersDataGridView.MultiSelect = false;
             OrdersDataGridView.Name = "OrdersDataGridView";
             OrdersDataGridView.RightToLeft = RightToLeft.No;
             OrdersDataGridView.RowHeadersWidth = 30;
-            OrdersDataGridView.Size = new Size(397, 567);
+            OrdersDataGridView.Size = new Size(306, 561);
             OrdersDataGridView.TabIndex = 12;
+            OrdersDataGridView.SelectionChanged += OrdersDataGridView_SelectionChanged;
             // 
             // IdColumn
             // 

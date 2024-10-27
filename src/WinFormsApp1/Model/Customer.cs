@@ -121,6 +121,11 @@ namespace ObjectOrientedPractics.Model
             CustomerCart = new Cart();
             Orders = new List<Order>();
         }
+
+        /// <summary>
+        /// Gets and sets the priority of the order.
+        /// </summary>
+        public bool IsPriority { get; set; } = false;
     }
 }
 

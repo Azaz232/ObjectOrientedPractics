@@ -7,7 +7,7 @@ namespace WinFormsApp1
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Переменная типа Store.
+        /// .
         /// </summary>
         private Store _store = new Store();
         public MainForm()
@@ -36,7 +36,7 @@ namespace WinFormsApp1
                     ordersTab1.RefreshData();
                     break;
                 case 4:
-                    ordersTab1.RefreshData();
+                    priorityOrderTab1.RefreshData();
                     break;
             }
         }

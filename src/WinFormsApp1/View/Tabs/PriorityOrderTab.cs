@@ -49,11 +49,11 @@ namespace ObjectOrientedPractics.View.Tabs
         private int _selectedOrderIndex;
 
 
-
-
         public PriorityOrderTab()
         {
             InitializeComponent();
+            StatusComboBox.DataSource = Enum.GetValues(typeof(OrderStatus));
+            DeliveryTimeComboBox.DataSource = Enum.GetValues(typeof(OrderTime));
         }
 
 
@@ -70,7 +70,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     foreach (Order order in customer.Orders)
                     {
-                        _priorityOrders.Add(new PriorityOrder(order.Status, order.Address, order.Items,
+                        _priorityOrders.Add(new PriorityOrder(order.Address, order.Items,
                            DateTime.Now, OrderTime.f9t11));
                     }
                 }
@@ -84,9 +84,9 @@ namespace ObjectOrientedPractics.View.Tabs
         private void RefreshDataGrid()
         {
             OrdersDataGridView.Rows.Clear();
-            foreach (PriorityOrder order in _priorityOrders)
+            foreach (Order order in _orders)
             {
-                OrdersDataGridView.Rows.Add(order.Id, order.Date, order.Status);
+                OrdersDataGridView.Rows.Add(order.Id, order.Date, order.Status, "aboba");
             }
         }
 
@@ -103,41 +103,16 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        /// <summary>
-        /// Adds elements of enum Orderstatus into StatusComboBox.
-        /// </summary>
-        private void LoadStatusComboBox()
-        {
-            StatusComboBox.Items.Clear();
-
-            foreach (var status in Enum.GetValues(typeof(OrderStatus)))
-            {
-                StatusComboBox.Items.Add(status);
-            }
-        }
-
-        /// <summary>
-        /// Adds elements of enum Orderstatus into StatusComboBox.
-        /// </summary>
-        private void LoadDeliveryTimeComboBox()
-        {
-            DeliveryTimeComboBox.Items.Clear();
-            foreach (var delivery in Enum.GetValues(typeof(OrderTime)))
-            {
-                DeliveryTimeComboBox.Items.Add(delivery);
-            }
-        }
-
 
         /// <summary>
         /// Refreshes data when swith to the tab.
         /// </summary>
-        private void Refreshdata()
+        public void RefreshData()
         {
             UpdateOrders();
             RefreshDataGrid();
-            LoadStatusComboBox();
-            LoadDeliveryTimeComboBox();
+            //LoadStatusComboBox();
+            //LoadDeliveryTimeComboBox();
             TotalCostLabel.Text = "0";
         }
 
@@ -155,26 +130,6 @@ namespace ObjectOrientedPractics.View.Tabs
             OrderItemsListBox.Items.Clear();
         }
 
-        private void OrdersDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            if (OrdersDataGridView.SelectedRows.Count != 0)
-            {
-                _selectedOrderIndex = OrdersDataGridView.SelectedRows[0].Index;
-                _selectedOrder = _priorityOrders[_selectedOrderIndex];
-
-
-                AddressControl.OurAddress = _orders[_selectedOrderIndex].Address;
-                AddressControl.SelelctedTextBoxs();
-
-                IdTextBox.Text = _selectedOrder.Id.ToString();
-                CreatedTextBox.Text = _selectedOrder.Date.ToString();
-                StatusComboBox.SelectedItem = _selectedOrder.Status;
-                DeliveryTimeComboBox.SelectedItem = _selectedOrder.DeliveryTime;
-                TotalCostLabel.Text = _selectedOrder.Amount.ToString();
-
-                FillOrderItemsListBox();
-            }
-        }
 
         private void StatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -182,7 +137,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 string ourStatus = StatusComboBox.Text;
                 OrderStatus orderStatus = (OrderStatus)Enum.Parse(typeof(OrderStatus), ourStatus);
-                _selectedOrder.Status = orderStatus;
+                //_selectedOrder.Status = orderStatus;
                 RefreshDataGrid();
             }
         }
@@ -193,7 +148,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 var selectedDeliveryTime = DeliveryTimeComboBox.Text;
                 OrderTime orderTime = (OrderTime)Enum.Parse(typeof(OrderTime), selectedDeliveryTime);
-                _selectedOrder.DeliveryTime = orderTime;
+                //_selectedOrder.DeliveryTime = orderTime;
                 RefreshDataGrid();
             }
         }
@@ -226,6 +181,27 @@ namespace ObjectOrientedPractics.View.Tabs
                 newOrder.Date, newOrder.Status);
 
             ClearTextBoxs();
+        }
+
+        private void OrdersDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (OrdersDataGridView.SelectedRows.Count != 0)
+            {
+                _selectedOrderIndex = OrdersDataGridView.SelectedRows[0].Index;
+                _selectedOrder = _priorityOrders[_selectedOrderIndex];
+
+
+                AddressControl.OurAddress = _orders[_selectedOrderIndex].Address;
+                AddressControl.SelelctedTextBoxs();
+
+                IdTextBox.Text = _selectedOrder.Id.ToString();
+                CreatedTextBox.Text = _selectedOrder.Date.ToString();
+                StatusComboBox.SelectedItem = _selectedOrder.Status;
+                DeliveryTimeComboBox.SelectedItem = _selectedOrder.DeliveryTime;
+                TotalCostLabel.Text = _selectedOrder.Amount.ToString();
+
+                FillOrderItemsListBox();
+            }
         }
     }
 }

@@ -30,6 +30,9 @@
         {
             Model.Address address1 = new Model.Address();
             SelectedOrderGroupBox = new GroupBox();
+            PriorityOptionsGroupBox = new GroupBox();
+            DeliveryTimeComboBox = new ComboBox();
+            DeliveryTimeLabel = new Label();
             StatusComboBox = new ComboBox();
             CreatedTextBox = new TextBox();
             IdTextBox = new TextBox();
@@ -49,6 +52,7 @@
             DataGridGroupBox = new GroupBox();
             OrderItemsGroupBox = new GroupBox();
             SelectedOrderGroupBox.SuspendLayout();
+            PriorityOptionsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).BeginInit();
             DataGridGroupBox.SuspendLayout();
             OrderItemsGroupBox.SuspendLayout();
@@ -57,6 +61,7 @@
             // SelectedOrderGroupBox
             // 
             SelectedOrderGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            SelectedOrderGroupBox.Controls.Add(PriorityOptionsGroupBox);
             SelectedOrderGroupBox.Controls.Add(StatusComboBox);
             SelectedOrderGroupBox.Controls.Add(CreatedTextBox);
             SelectedOrderGroupBox.Controls.Add(IdTextBox);
@@ -69,6 +74,38 @@
             SelectedOrderGroupBox.TabIndex = 0;
             SelectedOrderGroupBox.TabStop = false;
             SelectedOrderGroupBox.Text = "Selected Order";
+            // 
+            // PriorityOptionsGroupBox
+            // 
+            PriorityOptionsGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            PriorityOptionsGroupBox.Controls.Add(DeliveryTimeComboBox);
+            PriorityOptionsGroupBox.Controls.Add(DeliveryTimeLabel);
+            PriorityOptionsGroupBox.Location = new Point(240, 25);
+            PriorityOptionsGroupBox.Name = "PriorityOptionsGroupBox";
+            PriorityOptionsGroupBox.Size = new Size(209, 67);
+            PriorityOptionsGroupBox.TabIndex = 7;
+            PriorityOptionsGroupBox.TabStop = false;
+            PriorityOptionsGroupBox.Text = "Priority Options";
+            PriorityOptionsGroupBox.Visible = false;
+            // 
+            // DeliveryTimeComboBox
+            // 
+            DeliveryTimeComboBox.FormattingEnabled = true;
+            DeliveryTimeComboBox.Location = new Point(93, 26);
+            DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
+            DeliveryTimeComboBox.Size = new Size(85, 23);
+            DeliveryTimeComboBox.TabIndex = 1;
+            DeliveryTimeComboBox.Text = "9:00 - 11:00";
+            DeliveryTimeComboBox.SelectedIndexChanged += DeliveryTimeComboBox_SelectedIndexChanged;
+            // 
+            // DeliveryTimeLabel
+            // 
+            DeliveryTimeLabel.AutoSize = true;
+            DeliveryTimeLabel.Location = new Point(6, 26);
+            DeliveryTimeLabel.Name = "DeliveryTimeLabel";
+            DeliveryTimeLabel.Size = new Size(81, 15);
+            DeliveryTimeLabel.TabIndex = 0;
+            DeliveryTimeLabel.Text = "Delivery Time:";
             // 
             // StatusComboBox
             // 
@@ -206,6 +243,7 @@
             AddressControl.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             AddressControl.Location = new Point(326, 145);
             AddressControl.Margin = new Padding(3, 2, 3, 2);
+            AddressControl.MinimumSize = new Size(390, 180);
             AddressControl.Name = "AddressControl";
             address1.Apartment = "";
             address1.Building = "";
@@ -254,6 +292,8 @@
             Size = new Size(806, 596);
             SelectedOrderGroupBox.ResumeLayout(false);
             SelectedOrderGroupBox.PerformLayout();
+            PriorityOptionsGroupBox.ResumeLayout(false);
+            PriorityOptionsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).EndInit();
             DataGridGroupBox.ResumeLayout(false);
             OrderItemsGroupBox.ResumeLayout(false);
@@ -284,5 +324,8 @@
         private GroupBox OrderItemsGroupBox;
         private Controls.AddressControl AddressControl;
         private GroupBox DataGridGroupBox;
+        private GroupBox PriorityOptionsGroupBox;
+        private ComboBox DeliveryTimeComboBox;
+        private Label DeliveryTimeLabel;
     }
 }

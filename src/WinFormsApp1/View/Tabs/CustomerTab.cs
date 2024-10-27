@@ -30,6 +30,10 @@ namespace ObjectOrientedPractics.View.Tabs
         public List<Customer> Customers { get { return _customers; } set { _customers = value; } }
 
 
+
+        private bool _isPriority = false;
+
+
         public CustomerTab()
         {
             InitializeComponent();
@@ -77,6 +81,15 @@ namespace ObjectOrientedPractics.View.Tabs
             FullNameTextBox.Text = _currentCustomer.Fullname.ToString();
             Address selectedAddress = _currentCustomer.CustomerAddress;
             AddressControl.SelelctedTextBoxs();
+
+            if (PriorityCheckBox.Checked)
+            {
+                _currentCustomer.IsPriority = true;
+            }
+            else
+            {
+                _currentCustomer.IsPriority = false;
+            }
         }
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
@@ -115,8 +128,10 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     Customer selectedCustomer = AddItemsInfo();
                     selectedCustomer.CustomerAddress = AddressControl.AddInfoFromTextBox();
+                    selectedCustomer.IsPriority = _isPriority;
                     _customers.Add(selectedCustomer);
                     UpdateListBox();
+                    //MessageBox.Show($"{selectedCustomer.IsPriority}");
                 }
                 else
                 {
@@ -164,5 +179,17 @@ namespace ObjectOrientedPractics.View.Tabs
                 UpdateListBox();
             }
         }
-    }
+
+        private void PriorityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(PriorityCheckBox.Checked == true)
+            {
+                _isPriority = true;
+            }
+            else
+            {
+                _isPriority = false;
+            }
+        }
+    }  
 }
