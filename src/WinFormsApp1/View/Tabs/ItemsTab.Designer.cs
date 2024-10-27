@@ -59,7 +59,7 @@
             ItemsGroupBox.Margin = new Padding(3, 2, 3, 2);
             ItemsGroupBox.Name = "ItemsGroupBox";
             ItemsGroupBox.Padding = new Padding(3, 2, 3, 2);
-            ItemsGroupBox.Size = new Size(294, 417);
+            ItemsGroupBox.Size = new Size(294, 437);
             ItemsGroupBox.TabIndex = 0;
             ItemsGroupBox.TabStop = false;
             ItemsGroupBox.Text = "Items";
@@ -69,7 +69,7 @@
             groupBox1.Controls.Add(RemoveButton);
             groupBox1.Controls.Add(AddButton);
             groupBox1.Dock = DockStyle.Bottom;
-            groupBox1.Location = new Point(3, 322);
+            groupBox1.Location = new Point(3, 342);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
@@ -110,7 +110,7 @@
             ItemsListBox.Location = new Point(5, 20);
             ItemsListBox.Margin = new Padding(3, 2, 3, 2);
             ItemsListBox.Name = "ItemsListBox";
-            ItemsListBox.Size = new Size(280, 289);
+            ItemsListBox.Size = new Size(280, 304);
             ItemsListBox.TabIndex = 0;
             ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
             ItemsListBox.DoubleClick += ItemsListBox_DoubleClick;
@@ -250,7 +250,7 @@
             Margin = new Padding(3, 2, 3, 2);
             MinimumSize = new Size(614, 417);
             Name = "ItemsTab";
-            Size = new Size(614, 417);
+            Size = new Size(614, 437);
             ItemsGroupBox.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);

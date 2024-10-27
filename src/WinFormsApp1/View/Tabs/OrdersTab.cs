@@ -3,6 +3,7 @@ using ObjectOrientedPractics.View.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -40,10 +41,25 @@ namespace ObjectOrientedPractics.View.Tabs
         private Order _selectedOrder = new Order();
 
 
+
+
+
+        /// <summary>
+        /// Priority order.
+        /// </summary>
+        private PriorityOrder _priorityOrder;
+
+
+
+
+
+
+
         public OrdersTab()
         {
             InitializeComponent();
-
+            StatusComboBox.DataSource = Enum.GetValues(typeof(OrderStatus));
+            DeliveryTimeComboBox.DataSource = Enum.GetValues(typeof(OrderTime));
         }
 
         /// <summary>
@@ -54,7 +70,7 @@ namespace ObjectOrientedPractics.View.Tabs
             OrdersDataGridView.Rows.Clear();
             _orders = new List<Order>();
             UpdateOrders();
-            LoadStatusComboBox();
+            //LoadStatusComboBox();
         }
 
         /// <summary>
@@ -83,19 +99,6 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Adds elements of enum Orderstatus into StatusComboBox.
-        /// </summary>
-        private void LoadStatusComboBox()
-        {
-            StatusComboBox.Items.Clear();
-
-            foreach (var status in Enum.GetValues(typeof(OrderStatus)))
-            {
-                StatusComboBox.Items.Add(status);
-            }
-        }
-
-        /// <summary>
         /// Fills the list with orders.
         /// </summary>
         private void FillOrderItemsListBox()
@@ -106,6 +109,15 @@ namespace ObjectOrientedPractics.View.Tabs
                 OrderItemsListBox.Items.Add(item.Name);
             }
         }
+
+
+
+        private List<string> ParseItemNames(List<Item> items)
+        {
+            var itemNames = items.Select(item => item.Name).ToList();
+            return itemNames;
+        }
+
 
         private void OrdersDataGridView_SelectionChanged(object sender, EventArgs e)
         {
@@ -122,9 +134,22 @@ namespace ObjectOrientedPractics.View.Tabs
                 StatusComboBox.SelectedItem = _selectedOrder.Status;
                 TotalCostLabel.Text = _selectedOrder.Amount.ToString();
 
+
+                if (_selectedOrder is PriorityOrder priorityOrder)
+                {
+                    _priorityOrder = priorityOrder;
+                    DeliveryTimeComboBox.SelectedIndex = (int)priorityOrder.DeliveryTime;
+                    PriorityOptionsGroupBox.Visible = true; 
+                }
+                else if(_selectedOrder is Order)
+                {
+                    _priorityOrder = null;
+                    PriorityOptionsGroupBox.Visible = false;
+                }
                 FillOrderItemsListBox();
             }
         }
+
 
         private void StatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -144,6 +169,22 @@ namespace ObjectOrientedPractics.View.Tabs
                     MessageBoxDefaultButton.Button1);
                 return;
             }
+        }
+
+        private void DeliveryTimeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_priorityOrder == null)
+            {
+                return;
+            }
+
+            if (DeliveryTimeComboBox.SelectedItem == null)
+            {
+                return; 
+            }
+            _priorityOrder.DeliveryTime = (OrderTime)DeliveryTimeComboBox.SelectedItem;
+
+
         }
     }
 }
