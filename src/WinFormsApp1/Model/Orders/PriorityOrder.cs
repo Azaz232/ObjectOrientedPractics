@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ObjectOrientedPractics.Model.Enums;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Orders
 {
     /// <summary>
     /// Holds data of priority order.
@@ -35,7 +36,7 @@ namespace ObjectOrientedPractics.Model
             List<Item> items,
             DateTime deliveryDate,
             OrderTime deliveryTime
-            ) : base (address, items) 
+            ) : base(address, items, 0.0)
         {
             DeliveryDate = deliveryDate;
             DeliveryTime = deliveryTime;

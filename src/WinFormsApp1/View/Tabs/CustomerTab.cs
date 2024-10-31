@@ -72,6 +72,31 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
+        /// Updates info in discounts list box. 
+        /// </summary>
+        /// <param name="customer"></param>
+        private void UpdateDiscountsListBox(Customer customer)
+        {
+            DiscountsListBox.Items.Clear();
+
+            foreach (var discount in customer.Discounts)
+            {
+                DiscountsListBox.Items.Add(discount.Info);
+            }
+        }
+
+        /// <summary>
+        /// Updates info in discounts list box. 
+        /// </summary>
+        private void UpdateDiscountsListBox()
+        {
+            if (CustomersListBox.SelectedIndex > 0)
+            {
+                UpdateDiscountsListBox(Customers[CustomersListBox.SelectedIndex]);
+            }
+        }
+
+        /// <summary>
         /// Updates info about a customer in the TextBox.
         /// </summary>
         private void UpdateItemInfo()
@@ -90,6 +115,8 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _currentCustomer.IsPriority = false;
             }
+
+            UpdateDiscountsListBox(_currentCustomer);
         }
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
@@ -172,6 +199,15 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        private void CustomersListBox_Click(object sender, EventArgs e)
+        {
+            if (CustomersListBox.SelectedItem != null)
+            {
+                AddressControl.EditTextBoxes(_currentCustomer);
+            }
+        }
+
+
         private void CustomerListBox_DoubleClick(object sender, EventArgs e)
         {
             if (CustomersListBox.SelectedItem != null)
@@ -182,7 +218,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void PriorityCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if(PriorityCheckBox.Checked == true)
+            if (PriorityCheckBox.Checked == true)
             {
                 _isPriority = true;
             }
@@ -191,5 +227,17 @@ namespace ObjectOrientedPractics.View.Tabs
                 _isPriority = false;
             }
         }
-    }  
+
+        private void AddDiscountsButton_Click(object sender, EventArgs e)
+        {
+            if (CustomersListBox.SelectedIndex != -1)
+            {
+                _currentCustomer = Customers[CustomersListBox.SelectedIndex];
+                //var discountWindowPopUp = new DiscountModalWindow(_currentCustomer);
+            }
+
+
+
+        }
+    }
 }

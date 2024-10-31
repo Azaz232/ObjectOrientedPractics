@@ -10,7 +10,7 @@ namespace ObjectOrientedPractics.Model.Discounts
     /// <summary>
     /// Discounts.
     /// </summary>
-    public class PointsDiscount
+    public class PointsDiscount : IDiscount
     {
         /// <summary>
         /// Points.

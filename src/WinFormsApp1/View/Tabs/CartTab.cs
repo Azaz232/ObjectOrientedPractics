@@ -1,4 +1,6 @@
 ﻿using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Model.Orders;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -176,7 +178,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 else
                 {
                     CurrentCustomer.Orders.Add(new Order(CurrentCustomer.CustomerAddress,
-                    CurrentCustomer.CustomerCart.Items/*, CurrentCustomer.Fullname*/));
+                    CurrentCustomer.CustomerCart.Items, 0.0));
                     CurrentCustomer.CustomerCart.Items.Clear();
                     UpdateCartListBox();
                 }

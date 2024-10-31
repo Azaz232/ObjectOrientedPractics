@@ -74,7 +74,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Edits information from TextBoxes.                     
         /// </summary>
-        private void EditTextBoxes(Customer customer)
+        public void EditTextBoxes(Customer customer)
         {
             customer.CustomerAddress.Index = int.Parse(PostIndexTextBox.Text);
             customer.CustomerAddress.Country = CountryTextBox.Text;

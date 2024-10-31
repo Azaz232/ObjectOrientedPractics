@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace ObjectOrientedPractics.Model.Discounts
     /// <summary>
     /// Holds percentage discount.
     /// </summary>
-    public class PercentDiscount
+    public class PercentDiscount : IDiscount
     {
         /// <summary>
         /// Discount in percentage.
@@ -64,7 +65,7 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// Calculates discounts for items.
         /// </summary>
         /// <param name="items">List of items.</param>
-        /// <returns>Size of the discount</returns>
+        /// <returns> Returns size of the discount</returns>
         public double Calculate(List<Item> items)
         {
             double totalCost = 0;
@@ -84,7 +85,7 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// Uses points.
         /// </summary>
         /// <param name="items">List of items.</param>
-        /// <returns>Size of the discount</returns>
+        /// <returns> Returns size of the discount. </returns>
         public double Apply(List<Item> items)
         {
             return Calculate(items);
