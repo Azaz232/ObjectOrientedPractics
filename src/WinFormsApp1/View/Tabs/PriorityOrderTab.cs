@@ -73,7 +73,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     foreach (Order order in customer.Orders)
                     {
                         _priorityOrders.Add(new PriorityOrder(order.Address, order.Items,
-                           DateTime.Now, OrderTime.f9t11));
+                           DateTime.Now, OrderTime.f9t11, order.DiscountAmount));
                     }
                 }
             }

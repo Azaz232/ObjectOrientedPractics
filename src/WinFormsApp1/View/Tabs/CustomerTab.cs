@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ObjectOrientedPractics.View.AdditionalForms;
+using ObjectOrientedPractics.Model.Discounts;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -68,6 +70,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             FullNameTextBox.Clear();
             FullNameTextBox.BackColor = Color.White;
+            AddressControl.ClearTextBoxes();
             IDTextBox.Clear();
         }
 
@@ -233,11 +236,57 @@ namespace ObjectOrientedPractics.View.Tabs
             if (CustomersListBox.SelectedIndex != -1)
             {
                 _currentCustomer = Customers[CustomersListBox.SelectedIndex];
-                //var discountWindowPopUp = new DiscountModalWindow(_currentCustomer);
+                var discountWindowPopUp = new DiscountModalWindow(_currentCustomer);
+
+
+                if (discountWindowPopUp.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                var discount = new PercentDiscount(discountWindowPopUp.Category);
+                _currentCustomer.Discounts.Add(discount);
+                UpdateDiscountsListBox(_currentCustomer);
             }
+            else
+            {
+                MessageBox.Show(
+                    "You didnt choose a customer to add a discount.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1);
+                return;
+            }
+        }
 
-
-
+        private void RemoveDiscountsButton_Click(object sender, EventArgs e)
+        {
+            if (CustomersListBox.SelectedIndex != -1 && DiscountsListBox.SelectedIndex != -1)
+            {
+                _currentCustomer = Customers[CustomersListBox.SelectedIndex];
+                if (DiscountsListBox.SelectedIndex != 0)
+                {
+                    _currentCustomer.Discounts.RemoveAt(
+                        DiscountsListBox.SelectedIndex);
+                    UpdateDiscountsListBox(_currentCustomer);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                // Выводим сообщение, если не выбран элемент
+                MessageBox.Show(
+                    "You didnt choose a discount or a customer to delete.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1);
+                return;
+            }
         }
     }
 }

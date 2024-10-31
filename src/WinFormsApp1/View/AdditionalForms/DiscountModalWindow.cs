@@ -37,7 +37,7 @@ namespace ObjectOrientedPractics.View.AdditionalForms
         {
             InitializeComponent();
             Customer = customer;
-
+            LoadCategoryComboBox();
         }
 
         /// <summary>

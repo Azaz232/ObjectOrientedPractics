@@ -35,8 +35,8 @@ namespace ObjectOrientedPractics.Model.Orders
             Address address,
             List<Item> items,
             DateTime deliveryDate,
-            OrderTime deliveryTime
-            ) : base(address, items, 0.0)
+            OrderTime deliveryTime, double discountAmount
+            ) : base(address, items, discountAmount)
         {
             DeliveryDate = deliveryDate;
             DeliveryTime = deliveryTime;
@@ -46,8 +46,10 @@ namespace ObjectOrientedPractics.Model.Orders
         /// <summary>
         /// Creates a sample of an inhereted class PriorityOrder.
         /// </summary>
-        public PriorityOrder()
+        public PriorityOrder() : base()
         {
+            DeliveryDate = DateTime.Now;
+            DeliveryTime = OrderTime.f9t11;
         }
 
     }

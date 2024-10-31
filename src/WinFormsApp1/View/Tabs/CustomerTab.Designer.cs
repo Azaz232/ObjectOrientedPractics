@@ -134,6 +134,7 @@
             RemoveDiscountsButton.TabIndex = 2;
             RemoveDiscountsButton.Text = "Remove";
             RemoveDiscountsButton.UseVisualStyleBackColor = true;
+            RemoveDiscountsButton.Click += RemoveDiscountsButton_Click;
             // 
             // AddDiscountsButton
             // 

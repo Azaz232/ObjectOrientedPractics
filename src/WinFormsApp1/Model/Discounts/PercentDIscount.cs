@@ -40,7 +40,10 @@ namespace ObjectOrientedPractics.Model.Discounts
             }
             private set
             {
-                ValueValidator.AssertStringOnLength(value, 1, 10, "Percent");
+                if (value < 1 || value > 10)
+                {
+                    throw new ArgumentException("out of range");
+                }
                 _percent = value;
             }
         }
