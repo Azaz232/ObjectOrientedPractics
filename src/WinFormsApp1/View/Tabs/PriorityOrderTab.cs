@@ -12,6 +12,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+// this thing doesnt work
+// theres nothing to look at
+
 namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class PriorityOrderTab : UserControl
@@ -72,8 +76,12 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     foreach (Order order in customer.Orders)
                     {
-                        _priorityOrders.Add(new PriorityOrder(order.Address, order.Items,
-                           DateTime.Now, OrderTime.f9t11, order.DiscountAmount));
+                        if (order is PriorityOrder)
+                        {
+                        //    MessageBox.Show($"HELP ME {order.Amount}");
+                            _priorityOrders.Add(order as PriorityOrder);
+                        }
+
                     }
                 }
             }
@@ -86,7 +94,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void RefreshDataGrid()
         {
             OrdersDataGridView.Rows.Clear();
-            foreach (Order order in _orders)
+            foreach (PriorityOrder order in _priorityOrders)
             {
                 OrdersDataGridView.Rows.Add(order.Id, order.Date, order.Status, "aboba");
             }
@@ -165,9 +173,16 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void RemoveItemButtton_Click(object sender, EventArgs e)
         {
-            _selectedOrder.Items.RemoveAt(OrderItemsListBox.SelectedIndex);
-            FillOrderItemsListBox();
-            TotalCostLabel.Text = _selectedOrder.Amount.ToString();
+            if (OrderItemsListBox.SelectedIndex != -1)
+            {
+                _selectedOrder.Items.RemoveAt(OrderItemsListBox.SelectedIndex);
+                FillOrderItemsListBox();
+                TotalCostLabel.Text = _selectedOrder.Amount.ToString();
+            }
+            else
+            {
+                MessageBox.Show("ASHIBKA, TY DURAK");
+            }
         }
 
         private void ClearOrderButton_Click(object sender, EventArgs e)
@@ -185,7 +200,7 @@ namespace ObjectOrientedPractics.View.Tabs
             ClearTextBoxs();
         }
 
-        private void OrdersDataGridView_SelectionChanged(object sender, EventArgs e)
+        private void OrdersDataGridView_SelectionChanged_1(object sender, EventArgs e)
         {
             if (OrdersDataGridView.SelectedRows.Count != 0)
             {
@@ -193,7 +208,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 _selectedOrder = _priorityOrders[_selectedOrderIndex];
 
 
-                AddressControl.OurAddress = _orders[_selectedOrderIndex].Address;
+                AddressControl.OurAddress = _priorityOrders[_selectedOrderIndex].Address;
                 AddressControl.SelelctedTextBoxs();
 
                 IdTextBox.Text = _selectedOrder.Id.ToString();

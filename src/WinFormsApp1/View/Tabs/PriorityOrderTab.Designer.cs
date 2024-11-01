@@ -53,8 +53,8 @@
             OrdersDataGridView = new DataGridView();
             IdColumn = new DataGridViewTextBoxColumn();
             CreatedColumn = new DataGridViewTextBoxColumn();
-            OrderStatusColumn = new DataGridViewTextBoxColumn();
-            CustomerFullNameColumn = new DataGridViewTextBoxColumn();
+            OrderStatusColum = new DataGridViewTextBoxColumn();
+            CustomerFulNameColumn = new DataGridViewTextBoxColumn();
             SelectedOrderGroupBox.SuspendLayout();
             PriorityOptionsGroupBox.SuspendLayout();
             OrderItemsGroupBox.SuspendLayout();
@@ -76,7 +76,7 @@
             address1.Index = 100000;
             address1.Street = "";
             AddressControl.OurAddress = address1;
-            AddressControl.Size = new Size(484, 180);
+            AddressControl.Size = new Size(416, 180);
             AddressControl.TabIndex = 9;
             // 
             // SelectedOrderGroupBox
@@ -91,7 +91,7 @@
             SelectedOrderGroupBox.Controls.Add(IdLabel);
             SelectedOrderGroupBox.Location = new Point(376, 7);
             SelectedOrderGroupBox.Name = "SelectedOrderGroupBox";
-            SelectedOrderGroupBox.Size = new Size(454, 128);
+            SelectedOrderGroupBox.Size = new Size(386, 128);
             SelectedOrderGroupBox.TabIndex = 8;
             SelectedOrderGroupBox.TabStop = false;
             SelectedOrderGroupBox.Text = "Selected Order";
@@ -103,7 +103,7 @@
             PriorityOptionsGroupBox.Controls.Add(DeliveryTimeLabel);
             PriorityOptionsGroupBox.Location = new Point(192, 0);
             PriorityOptionsGroupBox.Name = "PriorityOptionsGroupBox";
-            PriorityOptionsGroupBox.Size = new Size(256, 114);
+            PriorityOptionsGroupBox.Size = new Size(188, 114);
             PriorityOptionsGroupBox.TabIndex = 6;
             PriorityOptionsGroupBox.TabStop = false;
             PriorityOptionsGroupBox.Text = "Priority Options";
@@ -297,22 +297,17 @@
             OrdersDataGridView.AllowUserToDeleteRows = false;
             OrdersDataGridView.AllowUserToResizeColumns = false;
             OrdersDataGridView.AllowUserToResizeRows = false;
-            OrdersDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             OrdersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            OrdersDataGridView.Columns.AddRange(new DataGridViewColumn[] { IdColumn, CreatedColumn, OrderStatusColumn, CustomerFullNameColumn });
-            OrdersDataGridView.Location = new Point(18, 13);
-            OrdersDataGridView.MinimumSize = new Size(306, 456);
-            OrdersDataGridView.MultiSelect = false;
+            OrdersDataGridView.Columns.AddRange(new DataGridViewColumn[] { IdColumn, CreatedColumn, OrderStatusColum, CustomerFulNameColumn });
+            OrdersDataGridView.Location = new Point(3, 16);
             OrdersDataGridView.Name = "OrdersDataGridView";
-            OrdersDataGridView.RightToLeft = RightToLeft.No;
-            OrdersDataGridView.RowHeadersWidth = 30;
-            OrdersDataGridView.Size = new Size(306, 561);
+            OrdersDataGridView.Size = new Size(367, 552);
             OrdersDataGridView.TabIndex = 12;
-            OrdersDataGridView.SelectionChanged += OrdersDataGridView_SelectionChanged;
+            OrdersDataGridView.SelectionChanged += OrdersDataGridView_SelectionChanged_1;
             // 
             // IdColumn
             // 
-            IdColumn.HeaderText = "Id";
+            IdColumn.HeaderText = "ID";
             IdColumn.Name = "IdColumn";
             // 
             // CreatedColumn
@@ -320,15 +315,15 @@
             CreatedColumn.HeaderText = "Created";
             CreatedColumn.Name = "CreatedColumn";
             // 
-            // OrderStatusColumn
+            // OrderStatusColum
             // 
-            OrderStatusColumn.HeaderText = "Order Status";
-            OrderStatusColumn.Name = "OrderStatusColumn";
+            OrderStatusColum.HeaderText = "Order Status";
+            OrderStatusColum.Name = "OrderStatusColum";
             // 
-            // CustomerFullNameColumn
+            // CustomerFulNameColumn
             // 
-            CustomerFullNameColumn.HeaderText = "Customer FullName";
-            CustomerFullNameColumn.Name = "CustomerFullNameColumn";
+            CustomerFulNameColumn.HeaderText = "Customer Full name";
+            CustomerFulNameColumn.Name = "CustomerFulNameColumn";
             // 
             // PriorityOrderTab
             // 
@@ -339,7 +334,7 @@
             Controls.Add(AddressControl);
             Controls.Add(SelectedOrderGroupBox);
             Name = "PriorityOrderTab";
-            Size = new Size(964, 605);
+            Size = new Size(896, 596);
             SelectedOrderGroupBox.ResumeLayout(false);
             SelectedOrderGroupBox.PerformLayout();
             PriorityOptionsGroupBox.ResumeLayout(false);
@@ -377,7 +372,7 @@
         private DataGridView OrdersDataGridView;
         private DataGridViewTextBoxColumn IdColumn;
         private DataGridViewTextBoxColumn CreatedColumn;
-        private DataGridViewTextBoxColumn OrderStatusColumn;
-        private DataGridViewTextBoxColumn CustomerFullNameColumn;
+        private DataGridViewTextBoxColumn OrderStatusColum;
+        private DataGridViewTextBoxColumn CustomerFulNameColumn;
     }
 }

@@ -61,7 +61,7 @@
             CustomersGroupBox.Margin = new Padding(3, 2, 3, 2);
             CustomersGroupBox.Name = "CustomersGroupBox";
             CustomersGroupBox.Padding = new Padding(3, 2, 3, 2);
-            CustomersGroupBox.Size = new Size(235, 572);
+            CustomersGroupBox.Size = new Size(235, 528);
             CustomersGroupBox.TabIndex = 0;
             CustomersGroupBox.TabStop = false;
             CustomersGroupBox.Text = "Customers";
@@ -75,7 +75,7 @@
             CustomersListBox.Location = new Point(5, 20);
             CustomersListBox.Margin = new Padding(3, 2, 3, 2);
             CustomersListBox.Name = "CustomersListBox";
-            CustomersListBox.Size = new Size(230, 499);
+            CustomersListBox.Size = new Size(230, 454);
             CustomersListBox.TabIndex = 6;
             CustomersListBox.Click += CustomersListBox_Click;
             CustomersListBox.SelectedIndexChanged += CustomersListBox_SelectedIndexChanged;
@@ -94,9 +94,10 @@
             SelectedCustomerGroupBox.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             SelectedCustomerGroupBox.Location = new Point(247, 22);
             SelectedCustomerGroupBox.Margin = new Padding(3, 2, 3, 2);
+            SelectedCustomerGroupBox.MinimumSize = new Size(466, 503);
             SelectedCustomerGroupBox.Name = "SelectedCustomerGroupBox";
             SelectedCustomerGroupBox.Padding = new Padding(3, 2, 3, 2);
-            SelectedCustomerGroupBox.Size = new Size(466, 550);
+            SelectedCustomerGroupBox.Size = new Size(466, 506);
             SelectedCustomerGroupBox.TabIndex = 1;
             SelectedCustomerGroupBox.TabStop = false;
             SelectedCustomerGroupBox.Text = "Selected Customer";
@@ -111,7 +112,7 @@
             DiscountsPanel.Location = new Point(16, 340);
             DiscountsPanel.MinimumSize = new Size(440, 150);
             DiscountsPanel.Name = "DiscountsPanel";
-            DiscountsPanel.Size = new Size(444, 177);
+            DiscountsPanel.Size = new Size(444, 150);
             DiscountsPanel.TabIndex = 7;
             // 
             // DiscountsdLabel
@@ -129,6 +130,7 @@
             RemoveDiscountsButton.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             RemoveDiscountsButton.Location = new Point(321, 82);
             RemoveDiscountsButton.Margin = new Padding(3, 2, 3, 2);
+            RemoveDiscountsButton.MaximumSize = new Size(133, 36);
             RemoveDiscountsButton.Name = "RemoveDiscountsButton";
             RemoveDiscountsButton.Size = new Size(103, 36);
             RemoveDiscountsButton.TabIndex = 2;
@@ -142,6 +144,7 @@
             AddDiscountsButton.Font = new Font("Arial Narrow", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             AddDiscountsButton.Location = new Point(321, 38);
             AddDiscountsButton.Margin = new Padding(3, 2, 3, 2);
+            AddDiscountsButton.MaximumSize = new Size(133, 36);
             AddDiscountsButton.Name = "AddDiscountsButton";
             AddDiscountsButton.Size = new Size(103, 36);
             AddDiscountsButton.TabIndex = 1;
@@ -158,7 +161,7 @@
             DiscountsListBox.MaximumSize = new Size(301, 124);
             DiscountsListBox.MinimumSize = new Size(260, 120);
             DiscountsListBox.Name = "DiscountsListBox";
-            DiscountsListBox.Size = new Size(268, 124);
+            DiscountsListBox.Size = new Size(268, 109);
             DiscountsListBox.TabIndex = 0;
             // 
             // PriorityCheckBox
@@ -188,7 +191,7 @@
             address1.Index = 100000;
             address1.Street = "";
             AddressControl.OurAddress = address1;
-            AddressControl.Size = new Size(457, 207);
+            AddressControl.Size = new Size(457, 180);
             AddressControl.TabIndex = 5;
             // 
             // FullNameTextBox
@@ -235,7 +238,7 @@
             ButtonsGroupBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             ButtonsGroupBox.Controls.Add(RemoveButton);
             ButtonsGroupBox.Controls.Add(AddButton);
-            ButtonsGroupBox.Location = new Point(12, 576);
+            ButtonsGroupBox.Location = new Point(12, 532);
             ButtonsGroupBox.Margin = new Padding(3, 2, 3, 2);
             ButtonsGroupBox.Name = "ButtonsGroupBox";
             ButtonsGroupBox.Padding = new Padding(3, 2, 3, 2);
@@ -277,7 +280,7 @@
             Margin = new Padding(3, 2, 3, 2);
             MinimumSize = new Size(716, 437);
             Name = "CustomerTab";
-            Size = new Size(716, 639);
+            Size = new Size(716, 595);
             CustomersGroupBox.ResumeLayout(false);
             SelectedCustomerGroupBox.ResumeLayout(false);
             SelectedCustomerGroupBox.PerformLayout();

@@ -59,7 +59,7 @@
             ItemsGroupBox.Margin = new Padding(3, 2, 3, 2);
             ItemsGroupBox.Name = "ItemsGroupBox";
             ItemsGroupBox.Padding = new Padding(3, 2, 3, 2);
-            ItemsGroupBox.Size = new Size(294, 437);
+            ItemsGroupBox.Size = new Size(294, 459);
             ItemsGroupBox.TabIndex = 0;
             ItemsGroupBox.TabStop = false;
             ItemsGroupBox.Text = "Items";
@@ -69,7 +69,7 @@
             groupBox1.Controls.Add(RemoveButton);
             groupBox1.Controls.Add(AddButton);
             groupBox1.Dock = DockStyle.Bottom;
-            groupBox1.Location = new Point(3, 342);
+            groupBox1.Location = new Point(3, 364);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
@@ -110,14 +110,14 @@
             ItemsListBox.Location = new Point(5, 20);
             ItemsListBox.Margin = new Padding(3, 2, 3, 2);
             ItemsListBox.Name = "ItemsListBox";
-            ItemsListBox.Size = new Size(280, 304);
+            ItemsListBox.Size = new Size(280, 319);
             ItemsListBox.TabIndex = 0;
             ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
             ItemsListBox.DoubleClick += ItemsListBox_DoubleClick;
             // 
             // groupBox2
             // 
-            groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox2.Controls.Add(CategoryComboBox);
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(DescriptionTextBox);
@@ -133,7 +133,7 @@
             groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(314, 451);
+            groupBox2.Size = new Size(331, 439);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Selected Item";
@@ -145,7 +145,7 @@
             CategoryComboBox.Location = new Point(79, 87);
             CategoryComboBox.Margin = new Padding(3, 2, 3, 2);
             CategoryComboBox.Name = "CategoryComboBox";
-            CategoryComboBox.Size = new Size(132, 23);
+            CategoryComboBox.Size = new Size(149, 23);
             CategoryComboBox.TabIndex = 9;
             CategoryComboBox.SelectedIndexChanged += CategoryComboBox_SelectedIndexChanged;
             // 
@@ -161,12 +161,12 @@
             // 
             // DescriptionTextBox
             // 
-            DescriptionTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            DescriptionTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DescriptionTextBox.Location = new Point(15, 242);
             DescriptionTextBox.Margin = new Padding(3, 2, 3, 2);
             DescriptionTextBox.Multiline = true;
             DescriptionTextBox.Name = "DescriptionTextBox";
-            DescriptionTextBox.Size = new Size(283, 162);
+            DescriptionTextBox.Size = new Size(300, 168);
             DescriptionTextBox.TabIndex = 7;
             DescriptionTextBox.TextChanged += DescriptionTextBox_TextChanged_1;
             // 
@@ -182,7 +182,6 @@
             // 
             // NameTextBox
             // 
-            NameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NameTextBox.Location = new Point(15, 149);
             NameTextBox.Margin = new Padding(3, 2, 3, 2);
             NameTextBox.Multiline = true;
@@ -197,7 +196,7 @@
             CostTextBox.Location = new Point(79, 54);
             CostTextBox.Margin = new Padding(3, 2, 3, 2);
             CostTextBox.Name = "CostTextBox";
-            CostTextBox.Size = new Size(132, 24);
+            CostTextBox.Size = new Size(149, 24);
             CostTextBox.TabIndex = 4;
             CostTextBox.TextChanged += CostTextBox_TextChanged_1;
             // 
@@ -250,7 +249,7 @@
             Margin = new Padding(3, 2, 3, 2);
             MinimumSize = new Size(614, 417);
             Name = "ItemsTab";
-            Size = new Size(614, 437);
+            Size = new Size(631, 459);
             ItemsGroupBox.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
