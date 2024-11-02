@@ -31,7 +31,6 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private int _selectedOrderIndex;
 
-
         /// <summary>
         /// Gets and sets a list of orders.
         /// </summary>
@@ -42,20 +41,10 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private Order _selectedOrder = new Order();
 
-
-
-
-
         /// <summary>
         /// Priority order.
         /// </summary>
         private PriorityOrder _priorityOrder;
-
-
-
-
-
-
 
         public OrdersTab()
         {
@@ -113,8 +102,6 @@ namespace ObjectOrientedPractics.View.Tabs
                 OrderItemsListBox.Items.Add(item.Name);
             }
         }
-
-
 
         private List<string> ParseItemNames(List<Item> items)
         {

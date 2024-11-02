@@ -97,7 +97,7 @@
             SelectedCustomerGroupBox.MinimumSize = new Size(466, 503);
             SelectedCustomerGroupBox.Name = "SelectedCustomerGroupBox";
             SelectedCustomerGroupBox.Padding = new Padding(3, 2, 3, 2);
-            SelectedCustomerGroupBox.Size = new Size(466, 506);
+            SelectedCustomerGroupBox.Size = new Size(466, 521);
             SelectedCustomerGroupBox.TabIndex = 1;
             SelectedCustomerGroupBox.TabStop = false;
             SelectedCustomerGroupBox.Text = "Selected Customer";
@@ -109,10 +109,10 @@
             DiscountsPanel.Controls.Add(RemoveDiscountsButton);
             DiscountsPanel.Controls.Add(AddDiscountsButton);
             DiscountsPanel.Controls.Add(DiscountsListBox);
-            DiscountsPanel.Location = new Point(16, 340);
+            DiscountsPanel.Location = new Point(16, 352);
             DiscountsPanel.MinimumSize = new Size(440, 150);
             DiscountsPanel.Name = "DiscountsPanel";
-            DiscountsPanel.Size = new Size(444, 150);
+            DiscountsPanel.Size = new Size(444, 153);
             DiscountsPanel.TabIndex = 7;
             // 
             // DiscountsdLabel
@@ -191,7 +191,7 @@
             address1.Index = 100000;
             address1.Street = "";
             AddressControl.OurAddress = address1;
-            AddressControl.Size = new Size(457, 180);
+            AddressControl.Size = new Size(457, 195);
             AddressControl.TabIndex = 5;
             // 
             // FullNameTextBox

@@ -135,7 +135,6 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-
         private void AddButton_Click(object sender, EventArgs e)
         {
             try

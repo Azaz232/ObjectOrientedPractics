@@ -16,6 +16,10 @@ using System.Windows.Forms;
 // this thing doesnt work
 // theres nothing to look at
 
+// update
+// k now that works
+// im jsut dumb
+
 namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class PriorityOrderTab : UserControl
@@ -184,6 +188,9 @@ namespace ObjectOrientedPractics.View.Tabs
                 MessageBox.Show("ASHIBKA, TY DURAK");
             }
         }
+
+        // and here i started loosing it
+
 
         private void ClearOrderButton_Click(object sender, EventArgs e)
         {
