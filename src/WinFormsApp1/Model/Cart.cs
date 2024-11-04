@@ -9,7 +9,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Holds data of a customers cart.
     /// </summary>
-    public class Cart
+    public class Cart : ICloneable
     {
         /// <summary>
         /// Create a variable of a Item type.
@@ -49,7 +49,26 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// creates a sample of the class.
+        /// </summary>
+        public Cart()
+        {
+            Items = new List<Item>();   
+        }
 
-
+        /// <summary>
+        /// Copies an object of the class.
+        /// </summary>
+        /// <returns> A copy of the object. </returns>
+        public object Clone()
+        {
+            var cartClone = new Cart();
+            foreach (Item item in Items)
+            {
+                cartClone.Items.Add((Item)item.Clone());
+            }
+            return cartClone;
+        }
     }
 }

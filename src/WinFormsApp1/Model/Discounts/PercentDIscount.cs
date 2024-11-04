@@ -17,7 +17,7 @@ namespace ObjectOrientedPractics.Model.Discounts
     /// <summary>
     /// Holds percentage discount.
     /// </summary>
-    public class PercentDiscount : IDiscount
+    public class PercentDiscount : IDiscount, IComparable<PercentDiscount>
     {
         /// <summary>
         /// Discount in percentage.
@@ -132,5 +132,25 @@ namespace ObjectOrientedPractics.Model.Discounts
             Category = Category.Monitors;
         }
 
+        /// <summary>
+        /// Compares disocount percent.
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <returns> 0 - equal, 1 - percent is smaller, -1 - percent is bigger. </returns>
+        public int CompareTo(PercentDiscount subject)
+        {
+            if (subject == null)
+            {
+                return 1;
+            }
+            if (ReferenceEquals(this, subject))
+            {
+                return 0;
+            }
+            else
+            {
+                return _percent.CompareTo(subject.Percent);
+            }
+        }
     }
 }

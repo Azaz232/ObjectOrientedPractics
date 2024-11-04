@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ObjectOrientedPractics.Model.Enums;
 
-
-
 //i need help
 
 
@@ -20,7 +18,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Holds data of items.
     /// </summary>
-    public class Item
+    public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
     {
         /// <summary>
         /// Unique number of the item.
@@ -116,5 +114,82 @@ namespace ObjectOrientedPractics.Model
             Category = new Category();
         }
 
+        /// <summary>
+        /// Creates a copy of the class.
+        /// </summary>
+        /// <returns> Copy of an object. </returns>
+        public object Clone()
+        {
+            return new Item
+            {
+                Name = Name,
+                Info = Info,
+                Cost = Cost,
+                Category = Category
+            };
+        }
+
+        /// <summary>
+        /// Checks if the subjects are the same.
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <returns> Whether they are equal or not. </returns>
+        public bool Equals(Item subject)
+        {
+            if (subject == null)
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, subject))
+            {
+                return true;
+            }
+            return
+                Name == subject.Name &&
+                Info == subject.Info &&
+                Cost == subject.Cost &&
+                Category == subject.Category;
+        }
+
+        /// <summary>
+        /// Checks if the subjects are the same.
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <returns> Whether they are equal or not. </returns>
+        public override bool Equals(object subject)
+        {
+            if (subject == null)
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, subject))
+            {
+                return true;
+            }
+            return Equals((Item)subject);
+        }
+
+        /// <summary>
+        /// Compares the cost.
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <returns> 0 - equal, 1 - cost is lower, -1 - cost id higher.  </returns>
+        public int CompareTo(Item subject)
+        {
+            if (subject == null)
+            {
+                return 1;
+            }
+
+            if (ReferenceEquals(this, subject))
+            {
+                return 0;
+            }
+
+            else
+            {
+                return _cost.CompareTo(subject.Cost);
+            }
+        }
     }
 }
