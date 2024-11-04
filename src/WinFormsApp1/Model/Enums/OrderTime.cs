@@ -4,46 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Enums
 {
     /// <summary>
-    /// Items category.
+    /// Holds data of time gaps.
     /// </summary>
-    public enum Category
+    public enum OrderTime
     {
         /// <summary>
-        /// Phones.
+        /// 9:00 - 11:00.
         /// </summary>
-        Phones,
-
+        f9t11,
         /// <summary>
-        /// Computers.
+        /// 11:00 - 13:00.
         /// </summary>
-        Computers,
-
+        f11t13,
         /// <summary>
-        /// Monitors.
+        /// 13:00 - 15:00.
         /// </summary>
-        Monitors,
-
+        f13t15,
         /// <summary>
-        /// Keyboards.
+        /// 15:00 - 17:00.
         /// </summary>
-        Keyboards,
-
+        f15t17,
         /// <summary>
-        /// Games.
+        /// 17:00 - 19:00.
         /// </summary>
-        Games,
-
+        f17t19,
         /// <summary>
-        /// Laptops.
+        /// 19:00 - 21:00.
         /// </summary>
-        Laptops,
-
-        /// <summary>
-        /// Wires.
-        /// </summary>
-        Wires,
+        f19t21
     }
 }

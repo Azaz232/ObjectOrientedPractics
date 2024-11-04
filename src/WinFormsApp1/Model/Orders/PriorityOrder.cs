@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ObjectOrientedPractics.Model.Enums;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Orders
 {
     /// <summary>
     /// Holds data of priority order.
@@ -34,8 +35,8 @@ namespace ObjectOrientedPractics.Model
             Address address,
             List<Item> items,
             DateTime deliveryDate,
-            OrderTime deliveryTime
-            ) : base (address, items) 
+            OrderTime deliveryTime, double discountAmount
+            ) : base(address, items, discountAmount)
         {
             DeliveryDate = deliveryDate;
             DeliveryTime = deliveryTime;
@@ -45,8 +46,10 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Creates a sample of an inhereted class PriorityOrder.
         /// </summary>
-        public PriorityOrder()
+        public PriorityOrder() : base()
         {
+            DeliveryDate = DateTime.Now;
+            DeliveryTime = OrderTime.f9t11;
         }
 
     }

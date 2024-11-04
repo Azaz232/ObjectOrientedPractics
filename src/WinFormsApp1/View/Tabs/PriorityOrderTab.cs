@@ -1,4 +1,6 @@
 ﻿using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Model.Orders;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +11,14 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+
+// this thing doesnt work
+// theres nothing to look at
+
+// update
+// k now that works
+// im jsut dumb
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -70,8 +80,12 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     foreach (Order order in customer.Orders)
                     {
-                        _priorityOrders.Add(new PriorityOrder(order.Address, order.Items,
-                           DateTime.Now, OrderTime.f9t11));
+                        if (order is PriorityOrder)
+                        {
+                        //    MessageBox.Show($"HELP ME {order.Amount}");
+                            _priorityOrders.Add(order as PriorityOrder);
+                        }
+
                     }
                 }
             }
@@ -84,7 +98,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void RefreshDataGrid()
         {
             OrdersDataGridView.Rows.Clear();
-            foreach (Order order in _orders)
+            foreach (PriorityOrder order in _priorityOrders)
             {
                 OrdersDataGridView.Rows.Add(order.Id, order.Date, order.Status, "aboba");
             }
@@ -163,10 +177,20 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void RemoveItemButtton_Click(object sender, EventArgs e)
         {
-            _selectedOrder.Items.RemoveAt(OrderItemsListBox.SelectedIndex);
-            FillOrderItemsListBox();
-            TotalCostLabel.Text = _selectedOrder.Amount.ToString();
+            if (OrderItemsListBox.SelectedIndex != -1)
+            {
+                _selectedOrder.Items.RemoveAt(OrderItemsListBox.SelectedIndex);
+                FillOrderItemsListBox();
+                TotalCostLabel.Text = _selectedOrder.Amount.ToString();
+            }
+            else
+            {
+                MessageBox.Show("ASHIBKA, TY DURAK");
+            }
         }
+
+        // and here i started loosing it
+
 
         private void ClearOrderButton_Click(object sender, EventArgs e)
         {
@@ -183,7 +207,7 @@ namespace ObjectOrientedPractics.View.Tabs
             ClearTextBoxs();
         }
 
-        private void OrdersDataGridView_SelectionChanged(object sender, EventArgs e)
+        private void OrdersDataGridView_SelectionChanged_1(object sender, EventArgs e)
         {
             if (OrdersDataGridView.SelectedRows.Count != 0)
             {
@@ -191,7 +215,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 _selectedOrder = _priorityOrders[_selectedOrderIndex];
 
 
-                AddressControl.OurAddress = _orders[_selectedOrderIndex].Address;
+                AddressControl.OurAddress = _priorityOrders[_selectedOrderIndex].Address;
                 AddressControl.SelelctedTextBoxs();
 
                 IdTextBox.Text = _selectedOrder.Id.ToString();

@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 //  i still need help
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Orders
 {
     /// <summary>
     /// Holds data of a customers order.
@@ -54,7 +55,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Gets ans sets delivery Address.
         /// </summary>
-        public Address Address { get; set; } = new Address();   
+        public Address Address { get; set; } = new Address();
 
         /// <summary>
         /// Gets and sets a list of new items.                                 
@@ -87,12 +88,29 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Gets and sets a discount for items.
+        /// </summary>
+        public double DiscountAmount { get; set; }
+
+        /// <summary>
+        /// Returns the cost of the order with the discount.
+        /// </summary>
+        public double Total
+        {
+            get
+            {
+                return Amount - DiscountAmount;
+            }
+        }
+
+
+        /// <summary>
         /// Creates a sample of a class <see cref="Order"/>.
         /// </summary>
         /// <param name="status">Order's status.</param>
         /// <param name="address">Delivery address.</param>
         /// <param name="items">List of items.</param>
-        public Order(Address address, List<Item> items)        
+        public Order(Address address, List<Item> items, double discountAmount)
         {
             _id = IdGenerator.GetNextId();
             Status = new OrderStatus();
@@ -102,6 +120,7 @@ namespace ObjectOrientedPractics.Model
             {
                 Items.Add(item);
             }
+            DiscountAmount = discountAmount;
         }
 
         /// <summary>
@@ -113,6 +132,7 @@ namespace ObjectOrientedPractics.Model
             _date = DateTime.Now;
             Status = new OrderStatus();
             Items = new List<Item>();
+            DiscountAmount = 0.0;
         }
 
     }

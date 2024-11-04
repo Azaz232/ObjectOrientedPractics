@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ObjectOrientedPractics.View.AdditionalForms;
+using ObjectOrientedPractics.Model.Discounts;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -68,7 +70,33 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             FullNameTextBox.Clear();
             FullNameTextBox.BackColor = Color.White;
+            AddressControl.ClearTextBoxes();
             IDTextBox.Clear();
+        }
+
+        /// <summary>
+        /// Updates info in discounts list box. 
+        /// </summary>
+        /// <param name="customer"></param>
+        private void UpdateDiscountsListBox(Customer customer)
+        {
+            DiscountsListBox.Items.Clear();
+
+            foreach (var discount in customer.Discounts)
+            {
+                DiscountsListBox.Items.Add(discount.Info);
+            }
+        }
+
+        /// <summary>
+        /// Updates info in discounts list box. 
+        /// </summary>
+        private void UpdateDiscountsListBox()
+        {
+            if (CustomersListBox.SelectedIndex > 0)
+            {
+                UpdateDiscountsListBox(Customers[CustomersListBox.SelectedIndex]);
+            }
         }
 
         /// <summary>
@@ -90,6 +118,8 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _currentCustomer.IsPriority = false;
             }
+
+            UpdateDiscountsListBox(_currentCustomer);
         }
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
@@ -104,7 +134,6 @@ namespace ObjectOrientedPractics.View.Tabs
                 FullNameTextBox.BackColor = Color.LightPink;
             }
         }
-
 
         private void AddButton_Click(object sender, EventArgs e)
         {
@@ -172,6 +201,15 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        private void CustomersListBox_Click(object sender, EventArgs e)
+        {
+            if (CustomersListBox.SelectedItem != null)
+            {
+                AddressControl.EditTextBoxes(_currentCustomer);
+            }
+        }
+
+
         private void CustomerListBox_DoubleClick(object sender, EventArgs e)
         {
             if (CustomersListBox.SelectedItem != null)
@@ -182,7 +220,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void PriorityCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if(PriorityCheckBox.Checked == true)
+            if (PriorityCheckBox.Checked == true)
             {
                 _isPriority = true;
             }
@@ -191,5 +229,63 @@ namespace ObjectOrientedPractics.View.Tabs
                 _isPriority = false;
             }
         }
-    }  
+
+        private void AddDiscountsButton_Click(object sender, EventArgs e)
+        {
+            if (CustomersListBox.SelectedIndex != -1)
+            {
+                _currentCustomer = Customers[CustomersListBox.SelectedIndex];
+                var discountWindowPopUp = new DiscountModalWindow(_currentCustomer);
+
+
+                if (discountWindowPopUp.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                var discount = new PercentDiscount(discountWindowPopUp.Category);
+                _currentCustomer.Discounts.Add(discount);
+                UpdateDiscountsListBox(_currentCustomer);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "You didnt choose a customer to add a discount.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1);
+                return;
+            }
+        }
+
+        private void RemoveDiscountsButton_Click(object sender, EventArgs e)
+        {
+            if (CustomersListBox.SelectedIndex != -1 && DiscountsListBox.SelectedIndex != -1)
+            {
+                _currentCustomer = Customers[CustomersListBox.SelectedIndex];
+                if (DiscountsListBox.SelectedIndex != 0)
+                {
+                    _currentCustomer.Discounts.RemoveAt(
+                        DiscountsListBox.SelectedIndex);
+                    UpdateDiscountsListBox(_currentCustomer);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                // Выводим сообщение, если не выбран элемент
+                MessageBox.Show(
+                    "You didnt choose a discount or a customer to delete.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1);
+                return;
+            }
+        }
+    }
 }

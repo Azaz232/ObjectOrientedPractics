@@ -48,9 +48,12 @@
             CreatedColumn = new DataGridViewTextBoxColumn();
             OrderStatusColumn = new DataGridViewTextBoxColumn();
             CustomerFullNameColumn = new DataGridViewTextBoxColumn();
+            TotalColumn = new DataGridViewTextBoxColumn();
             AddressControl = new Controls.AddressControl();
             DataGridGroupBox = new GroupBox();
             OrderItemsGroupBox = new GroupBox();
+            TotalLabel = new Label();
+            TotalAmountLabel = new Label();
             SelectedOrderGroupBox.SuspendLayout();
             PriorityOptionsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)OrdersDataGridView).BeginInit();
@@ -207,7 +210,7 @@
             OrdersDataGridView.AllowUserToResizeRows = false;
             OrdersDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             OrdersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            OrdersDataGridView.Columns.AddRange(new DataGridViewColumn[] { IdColumn, CreatedColumn, OrderStatusColumn, CustomerFullNameColumn });
+            OrdersDataGridView.Columns.AddRange(new DataGridViewColumn[] { IdColumn, CreatedColumn, OrderStatusColumn, CustomerFullNameColumn, TotalColumn });
             OrdersDataGridView.Location = new Point(11, 12);
             OrdersDataGridView.MinimumSize = new Size(306, 456);
             OrdersDataGridView.MultiSelect = false;
@@ -237,6 +240,11 @@
             // 
             CustomerFullNameColumn.HeaderText = "Customer FullName";
             CustomerFullNameColumn.Name = "CustomerFullNameColumn";
+            // 
+            // TotalColumn
+            // 
+            TotalColumn.HeaderText = "Total";
+            TotalColumn.Name = "TotalColumn";
             // 
             // AddressControl
             // 
@@ -268,6 +276,8 @@
             // OrderItemsGroupBox
             // 
             OrderItemsGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            OrderItemsGroupBox.Controls.Add(TotalAmountLabel);
+            OrderItemsGroupBox.Controls.Add(TotalLabel);
             OrderItemsGroupBox.Controls.Add(OrderItemsListBox);
             OrderItemsGroupBox.Controls.Add(TotalCostLabel);
             OrderItemsGroupBox.Controls.Add(AmountLabel);
@@ -277,6 +287,28 @@
             OrderItemsGroupBox.TabIndex = 9;
             OrderItemsGroupBox.TabStop = false;
             OrderItemsGroupBox.Text = "groupBox1";
+            // 
+            // TotalLabel
+            // 
+            TotalLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            TotalLabel.AutoSize = true;
+            TotalLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            TotalLabel.Location = new Point(324, 200);
+            TotalLabel.Name = "TotalLabel";
+            TotalLabel.Size = new Size(52, 21);
+            TotalLabel.TabIndex = 6;
+            TotalLabel.Text = "Total:";
+            // 
+            // TotalAmountLabel
+            // 
+            TotalAmountLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            TotalAmountLabel.AutoSize = true;
+            TotalAmountLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            TotalAmountLabel.Location = new Point(382, 200);
+            TotalAmountLabel.Name = "TotalAmountLabel";
+            TotalAmountLabel.Size = new Size(46, 21);
+            TotalAmountLabel.TabIndex = 7;
+            TotalAmountLabel.Text = "4555";
             // 
             // OrdersTab
             // 
@@ -327,5 +359,8 @@
         private GroupBox PriorityOptionsGroupBox;
         private ComboBox DeliveryTimeComboBox;
         private Label DeliveryTimeLabel;
+        private DataGridViewTextBoxColumn TotalColumn;
+        private Label TotalAmountLabel;
+        private Label TotalLabel;
     }
 }

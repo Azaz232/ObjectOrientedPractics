@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ObjectOrientedPractics.Model.Enums;
+
 
 
 //i need help
@@ -13,7 +15,8 @@ using System.Threading.Tasks;
 
 using ObjectOrientedPractics.Services;
 
-namespace ObjectOrientedPractics.Model {
+namespace ObjectOrientedPractics.Model
+{
     /// <summary>
     /// Holds data of items.
     /// </summary>
