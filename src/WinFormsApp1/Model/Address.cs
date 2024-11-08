@@ -1,16 +1,18 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ObjectOrientedPractics.Model
 {
     /// <summary>
     /// Has the data about the address.
     /// </summary>
-    public class Address
+    public class Address : ICloneable, IEquatable<Address>
     {
         /// <summary>
         /// Postal code.
@@ -152,6 +154,57 @@ namespace ObjectOrientedPractics.Model
             Street = string.Empty;
             Building = string.Empty;
             Apartment = string.Empty;
+        }
+
+        /// <summary>
+        /// Creates a copy of the class.
+        /// </summary>
+        /// <returns> Copy of an object. </returns>
+        public object Clone()
+        {
+            return new Address(Index, Country, City, Street, Building, Apartment);
+        }
+
+        /// <summary>
+        /// Checks if the subjects are the same.
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <returns> Whether they are equal or not. </returns>
+        public bool Equals(Address subject)
+        {
+            if (subject == null)
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, subject))
+            {
+                return true;
+            }
+            return
+                Index == subject.Index && 
+                Country == subject.Country && 
+                City == subject.City && 
+                Street == subject.Street && 
+                Building == subject.Building && 
+                Apartment == subject.Apartment;
+        }
+
+        /// <summary>
+        /// Checks if the subjects are the same.
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <returns> Whether they are equal or not. </returns>
+        public override bool Equals(object subject)
+        {
+            if (subject == null)
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, subject))
+            {
+                return true;
+            }
+            return Equals((Address)subject);
         }
 
     }

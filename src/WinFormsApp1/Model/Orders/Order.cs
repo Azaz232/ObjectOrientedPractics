@@ -13,7 +13,7 @@ namespace ObjectOrientedPractics.Model.Orders
     /// <summary>
     /// Holds data of a customers order.
     /// </summary>
-    public class Order
+    public class Order : IEquatable<Order>
     {
         /// <summary>
         /// Order's id.
@@ -135,5 +135,47 @@ namespace ObjectOrientedPractics.Model.Orders
             DiscountAmount = 0.0;
         }
 
+        /// <summary>
+        /// Compares whether they are equal or not.
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <returns> Whether they are equal or not. </returns>
+        public bool Equals(Order subject)
+        {
+            if (subject == null)
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, subject))
+            {
+                return true;
+            }
+            if (!Items.SequenceEqual(subject.Items))
+            {
+                return false;
+            }
+            return
+                Address == subject.Address &&
+                Status == subject.Status &&
+                Amount == subject.Amount;
+        }
+
+        /// <summary>
+        /// Compares whether they are equal or not.
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <returns> Whether they are equal or not. </returns>
+        public override bool Equals(object subject)
+        {
+            if (subject == null)
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, subject))
+            {
+                return true;
+            }
+            return Equals((Order)subject);
+        }
     }
 }

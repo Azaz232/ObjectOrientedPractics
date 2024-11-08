@@ -10,7 +10,7 @@ namespace ObjectOrientedPractics.Model.Discounts
     /// <summary>
     /// Discounts.
     /// </summary>
-    public class PointsDiscount : IDiscount
+    public class PointsDiscount : IDiscount, IComparable<PointsDiscount>
     {
         /// <summary>
         /// Points.
@@ -114,5 +114,23 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// Returns info about the discount.
         /// </summary>
         public string Info => $"Saved – {Points} points";
+
+        /// <summary>
+        /// Compares points.
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <returns> 0 - equal, 1 - points are smaller, -1 - points are bigger. </returns>
+        public int CompareTo(PointsDiscount subject)
+        {
+            if (subject == null)
+            {
+                return -1;
+            }
+            if(ReferenceEquals(this, subject))
+            {
+                return 0;
+            }
+            return _points.CompareTo(subject.Points);
+        }
     }
 }
