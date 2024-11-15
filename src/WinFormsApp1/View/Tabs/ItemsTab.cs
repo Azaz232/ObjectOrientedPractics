@@ -36,6 +36,10 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         public List<Item> Items { get { return _items; } set { _items = value; } }
 
+
+
+
+
         /// <summary>
         /// Gets and sets a delegate of filtration criteria.
         /// </summary>
@@ -49,6 +53,9 @@ namespace ObjectOrientedPractics.View.Tabs
 
 
         private List<Item> _displayedItems = new();
+
+
+
 
 
         public ItemsTab()

@@ -26,13 +26,13 @@ namespace ObjectOrientedPractics.Services
         /// <param name="items"> List of items.</param>
         /// <param name="criteria"> Criteria.</param>
         /// <returns> Filtred list of items.</returns>
-        public static List<Item> FilterItems(List<Item> items, Predicate<Item> criteria)
+        public static List<Item> FilterItems(List<Item> items, Predicate<Item> criteria)   // predicate - возвращает булевое значение
         {
             var filteredItems = new List<Item>();
 
             foreach (var item in items)
             {
-                if (criteria(item))
+                if (criteria(item))                                                       // 
                 {
                     filteredItems.Add(item);
                 }
@@ -47,7 +47,7 @@ namespace ObjectOrientedPractics.Services
         /// <param name="items"> List of items <see cref="List{Item}"/>.</param>
         /// <param name="compare"> Criteria method <see cref="CompareCriteria"/>.</param>
         /// <returns> Sorted list of items.</returns>
-        public static List<Item> SortItems(List<Item> items, CompareCriteria compare)
+        public static List<Item> SortItems(List<Item> items, CompareCriteria compare)     // compare - переменная делегата
         {
             var sortedItems = new List<Item>(items);
 
@@ -55,7 +55,7 @@ namespace ObjectOrientedPractics.Services
             {
                 for (var j = 0; j < sortedItems.Count; j++)
                 {
-                    if (compare(sortedItems[i], sortedItems[j]))
+                    if (compare(sortedItems[i], sortedItems[j]))   // с помощью делегата сравниваем айтемы
                     {
                         var item = sortedItems[i];
                         sortedItems[i] = sortedItems[j];
