@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             ItemsGroupBox = new GroupBox();
+            SortByComboBox = new ComboBox();
+            OrderByLabel = new Label();
+            FindTextBox = new TextBox();
+            FindLabel = new Label();
             groupBox1 = new GroupBox();
             RemoveButton = new Button();
             AddButton = new Button();
@@ -51,6 +55,10 @@
             // 
             // ItemsGroupBox
             // 
+            ItemsGroupBox.Controls.Add(SortByComboBox);
+            ItemsGroupBox.Controls.Add(OrderByLabel);
+            ItemsGroupBox.Controls.Add(FindTextBox);
+            ItemsGroupBox.Controls.Add(FindLabel);
             ItemsGroupBox.Controls.Add(groupBox1);
             ItemsGroupBox.Controls.Add(ItemsListBox);
             ItemsGroupBox.Dock = DockStyle.Left;
@@ -59,17 +67,57 @@
             ItemsGroupBox.Margin = new Padding(3, 2, 3, 2);
             ItemsGroupBox.Name = "ItemsGroupBox";
             ItemsGroupBox.Padding = new Padding(3, 2, 3, 2);
-            ItemsGroupBox.Size = new Size(294, 459);
+            ItemsGroupBox.Size = new Size(294, 563);
             ItemsGroupBox.TabIndex = 0;
             ItemsGroupBox.TabStop = false;
             ItemsGroupBox.Text = "Items";
+            // 
+            // SortByComboBox
+            // 
+            SortByComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            SortByComboBox.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            SortByComboBox.FormattingEnabled = true;
+            SortByComboBox.Items.AddRange(new object[] { "Name", "Ascending Cost", "Down Cost" });
+            SortByComboBox.Location = new Point(64, 439);
+            SortByComboBox.Name = "SortByComboBox";
+            SortByComboBox.Size = new Size(221, 23);
+            SortByComboBox.TabIndex = 5;
+            SortByComboBox.SelectedIndexChanged += SortByComboBox_SelectedIndexChanged;
+            // 
+            // OrderByLabel
+            // 
+            OrderByLabel.AutoSize = true;
+            OrderByLabel.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            OrderByLabel.Location = new Point(8, 442);
+            OrderByLabel.Name = "OrderByLabel";
+            OrderByLabel.Size = new Size(50, 15);
+            OrderByLabel.TabIndex = 4;
+            OrderByLabel.Text = "Sort by: ";
+            // 
+            // FindTextBox
+            // 
+            FindTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            FindTextBox.Location = new Point(66, 16);
+            FindTextBox.Name = "FindTextBox";
+            FindTextBox.Size = new Size(219, 24);
+            FindTextBox.TabIndex = 3;
+            FindTextBox.TextChanged += FindTextBox_TextChanged;
+            // 
+            // FindLabel
+            // 
+            FindLabel.AutoSize = true;
+            FindLabel.Location = new Point(8, 19);
+            FindLabel.Name = "FindLabel";
+            FindLabel.Size = new Size(43, 15);
+            FindLabel.TabIndex = 2;
+            FindLabel.Text = "Find:  ";
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(RemoveButton);
             groupBox1.Controls.Add(AddButton);
             groupBox1.Dock = DockStyle.Bottom;
-            groupBox1.Location = new Point(3, 364);
+            groupBox1.Location = new Point(3, 468);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
@@ -107,10 +155,10 @@
             ItemsListBox.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             ItemsListBox.FormattingEnabled = true;
             ItemsListBox.ItemHeight = 15;
-            ItemsListBox.Location = new Point(5, 20);
+            ItemsListBox.Location = new Point(5, 50);
             ItemsListBox.Margin = new Padding(3, 2, 3, 2);
             ItemsListBox.Name = "ItemsListBox";
-            ItemsListBox.Size = new Size(280, 319);
+            ItemsListBox.Size = new Size(280, 334);
             ItemsListBox.TabIndex = 0;
             ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
             ItemsListBox.DoubleClick += ItemsListBox_DoubleClick;
@@ -133,7 +181,7 @@
             groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(331, 439);
+            groupBox2.Size = new Size(352, 543);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Selected Item";
@@ -145,7 +193,7 @@
             CategoryComboBox.Location = new Point(79, 87);
             CategoryComboBox.Margin = new Padding(3, 2, 3, 2);
             CategoryComboBox.Name = "CategoryComboBox";
-            CategoryComboBox.Size = new Size(149, 23);
+            CategoryComboBox.Size = new Size(170, 23);
             CategoryComboBox.TabIndex = 9;
             CategoryComboBox.SelectedIndexChanged += CategoryComboBox_SelectedIndexChanged;
             // 
@@ -166,7 +214,7 @@
             DescriptionTextBox.Margin = new Padding(3, 2, 3, 2);
             DescriptionTextBox.Multiline = true;
             DescriptionTextBox.Name = "DescriptionTextBox";
-            DescriptionTextBox.Size = new Size(300, 168);
+            DescriptionTextBox.Size = new Size(321, 272);
             DescriptionTextBox.TabIndex = 7;
             DescriptionTextBox.TextChanged += DescriptionTextBox_TextChanged_1;
             // 
@@ -196,7 +244,7 @@
             CostTextBox.Location = new Point(79, 54);
             CostTextBox.Margin = new Padding(3, 2, 3, 2);
             CostTextBox.Name = "CostTextBox";
-            CostTextBox.Size = new Size(149, 24);
+            CostTextBox.Size = new Size(170, 24);
             CostTextBox.TabIndex = 4;
             CostTextBox.TextChanged += CostTextBox_TextChanged_1;
             // 
@@ -249,8 +297,9 @@
             Margin = new Padding(3, 2, 3, 2);
             MinimumSize = new Size(614, 417);
             Name = "ItemsTab";
-            Size = new Size(631, 459);
+            Size = new Size(652, 563);
             ItemsGroupBox.ResumeLayout(false);
+            ItemsGroupBox.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
@@ -275,5 +324,9 @@
         private TextBox DescriptionTextBox;
         private ComboBox CategoryComboBox;
         private Label label5;
+        private Label FindLabel;
+        private TextBox FindTextBox;
+        private ComboBox SortByComboBox;
+        private Label OrderByLabel;
     }
 }
