@@ -94,13 +94,13 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Updates info in discounts list box. 
         /// </summary>
-        private void UpdateDiscountsListBox()
-        {
-            if (CustomersListBox.SelectedIndex > 0)
-            {
-                UpdateDiscountsListBox(Customers[CustomersListBox.SelectedIndex]);
-            }
-        }
+        //private void UpdateDiscountsListBox()
+        //{
+        //    if (CustomersListBox.SelectedIndex > 0)
+        //    {
+        //        UpdateDiscountsListBox(Customers[CustomersListBox.SelectedIndex]);
+        //    }
+        //}
 
         /// <summary>
         /// Updates info about a customer in the TextBox.
