@@ -31,7 +31,10 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         public List<Customer> Customers { get { return _customers; } set { _customers = value; } }
 
-
+        /// <summary>
+        /// Event for customers being changed
+        /// </summary>
+        public event EventHandler<EventArgs> CustomersChanged; 
 
         private bool _isPriority = false;
 
@@ -91,13 +94,13 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Updates info in discounts list box. 
         /// </summary>
-        private void UpdateDiscountsListBox()
-        {
-            if (CustomersListBox.SelectedIndex > 0)
-            {
-                UpdateDiscountsListBox(Customers[CustomersListBox.SelectedIndex]);
-            }
-        }
+        //private void UpdateDiscountsListBox()
+        //{
+        //    if (CustomersListBox.SelectedIndex > 0)
+        //    {
+        //        UpdateDiscountsListBox(Customers[CustomersListBox.SelectedIndex]);
+        //    }
+        //}
 
         /// <summary>
         /// Updates info about a customer in the TextBox.
@@ -128,6 +131,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _currentCustomer.Fullname = FullNameTextBox.Text;
                 FullNameTextBox.BackColor = Color.White;
+                CustomersChanged?.Invoke(this, EventArgs.Empty);
             }
             catch (ArgumentException)
             {
@@ -161,6 +165,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     _customers.Add(selectedCustomer);
                     UpdateListBox();
                     //MessageBox.Show($"{selectedCustomer.IsPriority}");
+                    CustomersChanged?.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {
@@ -191,6 +196,7 @@ namespace ObjectOrientedPractics.View.Tabs
             _customers.RemoveAt(CustomersListBox.SelectedIndex);
             CustomersListBox.Items.RemoveAt(CustomersListBox.SelectedIndex);
             ClearItemInfo();
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void CustomersListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -228,6 +234,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _isPriority = false;
             }
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void AddDiscountsButton_Click(object sender, EventArgs e)
@@ -246,6 +253,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 var discount = new PercentDiscount(discountWindowPopUp.Category);
                 _currentCustomer.Discounts.Add(discount);
                 UpdateDiscountsListBox(_currentCustomer);
+                CustomersChanged?.Invoke(this, EventArgs.Empty);
             }
             else
             {
@@ -269,6 +277,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     _currentCustomer.Discounts.RemoveAt(
                         DiscountsListBox.SelectedIndex);
                     UpdateDiscountsListBox(_currentCustomer);
+                    CustomersChanged?.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {

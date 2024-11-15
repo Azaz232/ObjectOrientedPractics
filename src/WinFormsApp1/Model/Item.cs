@@ -41,6 +41,21 @@ namespace ObjectOrientedPractics.Model
         private double _cost;
 
         /// <summary>
+        /// Event of name being chnaged
+        /// </summary>
+        public event EventHandler<EventArgs> NameChanged;
+
+        /// <summary>
+        /// Event of info being changed
+        /// </summary>
+        public event EventHandler<EventArgs> InfoChanged;
+
+        /// <summary>
+        /// event of cost being changed
+        /// </summary>
+        public event EventHandler<EventArgs> CostChanged;
+
+        /// <summary>
         /// Returns unique number of the item.
         /// </summary>
         public int Id { get { return _id; } }
@@ -48,23 +63,34 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Gets and sets the name of the item.
         /// </summary>
-        public string Name {
-            get { return _name; }
-            set {
+        public string Name 
+        {
+            get 
+            { 
+                return _name; 
+            }
+            set 
+            {
                 ValueValidator.AssertStringOnLength(value, 200, nameof(_name));
                 _name = value;
-                }
+                NameChanged?.Invoke(this, EventArgs.Empty);
             }
+        }
 
         /// <summary>
         /// Gets and sets the description of the item.
         /// </summary>
-        public string Info {
-            get { return _info; }
+        public string Info 
+        {
+            get 
+            { 
+                return _info; 
+            }
             set
             {
                 ValueValidator.AssertStringOnLength(value, 1000, nameof(_info));
                 _info = value;
+                InfoChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -73,10 +99,15 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public double Cost
         {
-            get { return _cost; }
-            set {
+            get 
+            {
+                return _cost; 
+            }
+            set
+            {
                 ValueValidator.AssertStringOnLength(value, 0, 100000, nameof(_cost));
                 _cost = value;
+                CostChanged?.Invoke(this, EventArgs.Empty); 
             }
         }
 
