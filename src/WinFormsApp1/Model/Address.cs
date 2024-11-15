@@ -45,6 +45,11 @@ namespace ObjectOrientedPractics.Model
         private string _apartment = string.Empty;
 
         /// <summary>
+        /// Event of address being changed
+        /// </summary>
+        public event EventHandler<EventArgs> AddressChanged;
+
+        /// <summary>
         /// Gets and sets a postal index. Supposed to have 6 numbers in it.
         /// </summary>
         public int Index
@@ -54,6 +59,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 100000, 999999, "Index");
                 _index = value;
+                AddressChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -68,6 +74,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 50, "Country");
                 _country = value;
+                AddressChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -81,6 +88,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 50, "City");
                 _city = value;
+                AddressChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -94,6 +102,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 100, "Street");
                 _street = value;
+                AddressChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -107,6 +116,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 10, "Building");
                 _building = value;
+                AddressChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -120,6 +130,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value, 10, "Apartment");
                 _apartment = value;
+                AddressChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
